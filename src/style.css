@@ -1,0 +1,69 @@
+@font-face {
+    font-family: "阿里妈妈方圆体 VF Regular";
+    src: url("@/assets/font/AlimamaFangYuanTiVF-Thin.woff2") format("woff2"),
+    url("@/assets/font/AlimamaFangYuanTiVF-Thin.woff") format("woff"),
+    url("@/assets/font/AlimamaFangYuanTiVF-Thin.ttf") format("ttf");
+    font-display: swap;
+}
+
+:root {
+    --plyr-color-main: #9286d1;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "阿里妈妈方圆体 VF Regular", system-ui, system-ui, system-ui, system-ui;
+}
+
+html,
+body {
+    height: 100%;
+    background-color: var(--el-bg-color-page);
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    cursor: auto;
+}
+
+/*主题切换动画*/
+::view-transition-new(root),
+::view-transition-old(root) {
+    /* 关闭默认动画，否则影响自定义动画的执行 */
+    animation: none;
+}
+
+.dark::view-transition-old(root) {
+    z-index: 100;
+}
+
+/*.el-loading-mask {*/
+/*    border-radius: 16px;*/
+/*}*/
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(144, 147, 153, 0.4);
+    border-radius: 8px;
+}
+
+.el-header, .el-main, .el-footer {
+    min-width: 1500px;
+}
+
+.el-main {
+    max-width: 1500px;
+    margin: 0 auto;
+    min-height: calc(100vh - 120px);
+}
+
