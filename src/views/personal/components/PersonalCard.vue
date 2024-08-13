@@ -26,7 +26,7 @@
               class="info-text">粉丝</span>
           </div>
         </div>
-        <div :class="{'personal-desc_dynamic':!isShowMore,'personal-desc':true}">
+        <div :class="{'text-ellipsis-1':!isShowMore,'personal-desc':true}">
           个人简介: {{ userData.description || "暂无简介" }}
         </div>
         <div class="ip-territory">
@@ -92,7 +92,7 @@ import {ElMessage} from "element-plus";
 import {useRouter} from "vue-router";
 import {ref} from "vue";
 
-const emit = defineEmits(["showFans", "showArticle"])
+const emits = defineEmits(["showFans", "showArticle"])
 const props = defineProps({
   isSelf: {
     type: Boolean
@@ -108,10 +108,10 @@ const router = useRouter()
 const isShowMore = ref(false)
 
 const showArticle = () => {
-  emit("showArticle")
+  emits("showArticle")
 }
 const showFans = () => {
-  emit("showFans")
+  emits("showFans")
 }
 const viewMore = () => {
   isShowMore.value = !isShowMore.value
@@ -181,14 +181,6 @@ const viewMore = () => {
             color: var(--el-color-primary);
           }
         }
-      }
-
-      .personal-desc_dynamic {
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 1;
-        overflow: hidden;
-        text-overflow: ellipsis;
       }
 
       .personal-desc {

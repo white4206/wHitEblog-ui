@@ -3,7 +3,7 @@
     <el-tabs v-model="activeTab" @tab-change="tabChange" @tab-click="tabClick">
       <el-tab-pane label="博客评论" name="articleComment" v-infinite-scroll="load" :infinite-scroll-disabled="infinite"
                    :infinite-scroll-delay="1000">
-        <el-tabs class="innerTab" v-model="activeArticleStatus" type="border-card" @tab-change="innerTabChange"
+        <el-tabs class="innerTab" v-model="activeCommentType" type="border-card" @tab-change="innerTabChange"
                  @tab-click="innerTabClick">
 
           <el-tab-pane label="我的文章评论" name="my">
@@ -58,7 +58,7 @@ const infinite = ref(false)
 const noMore = ref(true)
 const isLoading = ref(true)
 const activeTab = ref(route.query.tab || "articleComment")
-const activeArticleStatus = ref("my")
+const activeCommentType = ref("my")
 const articleComments = ref([1, 2, 3])
 
 const load = () => {
@@ -72,13 +72,15 @@ const tabClick = (tab) => {
   router.push({query: {tab: tab.paneName}})
 }
 const innerTabClick = (tab) => {
-  router.push({query: {tab: activeTab.value, status: tab.paneName}})
+  router.push({query: {tab: activeTab.value, type: tab.paneName}})
 }
 const innerTabChange = () => {
 }
 onMounted(() => {
   if (route.query.tab)
     activeTab.value = route.query.tab
+  if (route.query.type)
+    activeCommentType.value = route.query.type
 })
 </script>
 

@@ -12,7 +12,7 @@
             <span class="nickname">朽兮_</span>
             <el-tag type="primary" size="small">热评</el-tag>
             <span
-                class="text">博主adc基础配置那张图博主adc基础配置那张图博主adc基础配置那张图博主adc基础配置那张图，扫描应该是disable把，连续模式应该打开</span>
+                class="text text-ellipsis-1">博主adc基础配置那张图博主adc基础配置那张图博主adc基础配置那张图博主adc基础配置那张图，扫描应该是disable把，连续模式应该打开</span>
           </div>
         </div>
         <div class="right-part">
@@ -140,11 +140,6 @@ watch(commentValue, () => {
         .text {
           flex: 1;
           font-size: 14px;
-          display: -webkit-box;
-          -webkit-box-orient: vertical;
-          -webkit-line-clamp: 1;
-          overflow: hidden;
-          text-overflow: ellipsis;
         }
       }
     }

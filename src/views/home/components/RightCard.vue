@@ -24,7 +24,7 @@
             <p class="todolist-item-date-day">{{ item.finishDate.split("-")[2] }}</p>
             <p class="todolist-item-date-month">{{ item.finishDate.split("-")[1] + "月" }}</p>
           </div>
-          <div class="todolist-item-content">
+          <div class="todolist-item-content text-ellipsis-2">
             <el-tag size="small" :type="item.type">{{ item.status }}</el-tag>
             <span class="text-link">{{ item.content }}</span>
           </div>
@@ -42,33 +42,13 @@
         <div v-for="item in relatedLinkItems" :key="item.id" class="related-link-item"
              @click="jumpLink(item.linkUrl)">
           <div class="related-link-item-img-box">
-            <img :src="item.icon" :alt="item.title"
-                 class="related-link-item-img">
+            <el-image :src="item.icon" :alt="item.title"
+                      class="related-link-item-img"/>
           </div>
           <span class="related-link-item-title">{{ item.title }}</span>
           <el-icon>
             <ArrowRight/>
           </el-icon>
-        </div>
-      </el-card>
-      <el-card class="messages side-card" shadow="never">
-        <template #header>
-          <div class="card-header">
-            近期留言
-          </div>
-        </template>
-        <div v-for="item in messageItems" :key="item.id" class="message-item">
-          <div class="message-title">
-            <el-avatar :src="item.avatar" :alt="item.nickname"
-                       class="message-author-avatar"></el-avatar>
-            <span class="message-author-name">{{ item.nickname }}</span>
-            <span class="message-publication-time">{{ item.createTime }}</span>
-          </div>
-          <div class="message-content">
-            <p>{{ item.content }}</p>
-          </div>
-          <el-divider class="message-divider"
-                      v-if="item.id <= messageItems.length - 1"/>
         </div>
       </el-card>
       <WebsiteInfoCard/>
@@ -203,13 +183,7 @@ onMounted(() => {
 
 .todolist-item-content {
   flex: 1;
-  overflow: hidden;
   line-height: 1.5;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  cursor: pointer;
 }
 
 .todolist-item-content .text-link {

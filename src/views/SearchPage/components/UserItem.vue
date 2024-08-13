@@ -9,7 +9,7 @@
           <span>阅读 {{ '1.1万+' }}</span>
           <span>点赞 {{ 47 }}</span>
         </div>
-        <div class="description">
+        <div class="description text-ellipsis-1">
           CSDN博客专家，华为云享专家，HDZ核心组成员，
         </div>
       </div>
@@ -68,11 +68,6 @@
       width: 230px;
       font-size: 14px;
       color: var(--el-text-color-regular);
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 1;
-      overflow: hidden;
-      text-overflow: ellipsis;
     }
   }
 }

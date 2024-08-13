@@ -58,7 +58,7 @@
                       <span>o: {{ 56 }}个</span>
                     </div>
                     <div class="bg">
-                      <img class="logo" src="/public/favicon.ico" alt="">
+                      <el-image class="logo" src="/public/favicon.ico" alt=""/>
                       <div class="bar-box">
                         <div style="width: 70%" class="bar"></div>
                       </div>
@@ -221,7 +221,7 @@
             </el-card>
           </el-col>
           <el-col :span="6">
-            <RightCard/>
+            <RightCard :websiteInfoBarRef="websiteInfoBarRef"/>
           </el-col>
         </el-row>
       </el-col>

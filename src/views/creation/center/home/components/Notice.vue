@@ -4,7 +4,7 @@
       <h4>平台公告</h4>
       <el-button link>查看更多</el-button>
     </div>
-    <div class="notice-item" v-for="platformAnnouncement in platformAnnouncements" :key="platformAnnouncement.id">
+    <div class="notice-item text-ellipsis-1" v-for="platformAnnouncement in platformAnnouncements" :key="platformAnnouncement.id">
           <span class="date">
             {{
               new Date(platformAnnouncement.createTime).toLocaleDateString("sv-SE").split('-')[1]
@@ -47,11 +47,6 @@ onMounted(() => {
   line-height: 40px;
   font-size: 14px;
   cursor: pointer;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
 
   .date {
     color: var(--el-text-color-regular);

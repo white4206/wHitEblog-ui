@@ -25,7 +25,7 @@
           <div class="left-part">
             <div>
               <div class="nickname">
-                <el-button link>昵称很长你要听吗</el-button>
+                <el-button class="text-ellipsis-1" link>昵称很长你要听吗</el-button>
               </div>
               <div class="info">2024-07-13通过 博客 关注了你</div>
             </div>
@@ -117,11 +117,6 @@ const pageChange = () => {
 
           .nickname {
             .el-button {
-              display: -webkit-box;
-              -webkit-box-orient: vertical;
-              -webkit-line-clamp: 1;
-              overflow: hidden;
-              text-overflow: ellipsis;
               padding: 0;
               color: var(--el-text-color-primary);
             }
@@ -160,6 +155,18 @@ const pageChange = () => {
         }
       }
     }
+  }
+}
+
+.more-item {
+  .item {
+    cursor: pointer;
+    text-align: center;
+    padding: 10px;
+  }
+
+  .item:hover {
+    background-color: var(--el-color-primary-light-9);
   }
 }
 </style>

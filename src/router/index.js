@@ -100,6 +100,27 @@ const routes = [
                 component: () => import("@/views/creation/success/index.vue")
             },
             {
+                path: "upload",
+                meta: {title: "上传资源"},
+                component: () => import("@/views/creation/upload/index.vue"),
+                children: [
+                    {
+                        path: "single",
+                        meta: {title: "上传资源"},
+                        component: () => import("@/views/creation/upload/single/index.vue")
+                    },
+                    {
+                        path: "batch",
+                        meta: {title: "批量上传"},
+                        component: () => import("@/views/creation/upload/batch/index.vue")
+                    },
+                    {
+                        path: "/creation/upload",
+                        redirect: "/creation/upload/single",
+                    }
+                ],
+            },
+            {
                 path: "",
                 meta: {title: "创作中心"},
                 component: () => import("@/views/creation/center/index.vue"),
@@ -168,7 +189,8 @@ const routes = [
                 path: "history",
                 meta: {title: "浏览历史"},
                 component: () => import("@/views/user/history/index.vue")
-            }, {
+            },
+            {
                 path: "favorite",
                 meta: {title: "我的收藏"},
                 component: () => import("@/views/user/favorite/index.vue")

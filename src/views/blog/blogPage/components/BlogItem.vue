@@ -1,14 +1,17 @@
 <template>
   <div class="blog-item">
     <div class="left">
-      <img v-if="blogItem.cover" :src="blogItem.cover" :alt="blogItem.title" class="left-img">
+      <el-image
+          v-if="blogItem.cover" :src="blogItem.cover"
+          :alt="blogItem.title" class="left-img"
+      />
     </div>
     <div class="content">
       <div class="title">
-        <p class="text">{{ blogItem.title }}</p>
+        <p class="text text-ellipsis-1">{{ blogItem.title }}</p>
       </div>
       <div class="description">
-        <p class="text">{{ blogItem.abstractText }}</p>
+        <p class="text text-ellipsis-2">{{ blogItem.abstractText }}</p>
       </div>
       <div class="operation">
         <div class="isLike">
@@ -18,14 +21,20 @@
             </el-icon>
             <span class="number">{{ blogItem.likeNum }} 赞</span>
           </div>
-          <div class="unlike" @click.stop="ElMessage.info('点踩功能暂未支持')">
+          <div
+              class="unlike"
+              @click.stop="ElMessage.info('点踩功能暂未支持')"
+          >
             <el-icon :size="16">
               <svg-icon icon-name="unlike"/>
             </el-icon>
             <span class="number">{{ blogItem.dislikeNum }} 踩</span>
           </div>
         </div>
-        <div class="author" @click.stop="router.push({path:'/personal',query:{author:blogItem.authorId}})">
+        <div
+            class="author"
+            @click.stop="router.push({path:'/personal',query:{author:blogItem.authorId}})"
+        >
           作者: {{ blogItem.author }}
         </div>
         <div class="release-time">
@@ -78,11 +87,6 @@ const props = defineProps({
     .text {
       font-size: 18px;
       margin-bottom: 5px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 1;
     }
   }
 
@@ -96,11 +100,6 @@ const props = defineProps({
       color: var(--el-text-color-regular);
       font-size: 14px;
       line-height: 1.5;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 2;
     }
   }
 

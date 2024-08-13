@@ -5,16 +5,16 @@
         <el-icon style="margin-right: 5px" :size="22">
           <svg-icon icon-name="videoB"/>
         </el-icon>
-        <span>VueCli3.x小白入门-slot插槽的使用</span>
+        <span class="text-ellipsis-1">VueCli3.x小白入门-slot插槽的使用</span>
       </div>
     </div>
     <div class="text-box">
       <div style="display: flex;justify-content: space-between;">
-        <div class="abstractText">
+        <div class="abstractText text-ellipsis-1">
           欢迎收看由“weixin_39811651”带来的视频：ixin_39811651”带来的视频：ixin_39811651”带来的视频：ixin_39811651”带来的视频：ixin_39811651”带来的视频：VueCli3.x小白入门-slot插槽的使用，喜欢请多多分享、点赞、收藏。
         </div>
         <div class="image-box">
-          <img src="@/assets/images/common/watermark.png"/>
+          <el-image src="/src/assets/images/common/watermark.png"/>
           <div class="masking">
             <el-icon :size="28" color="var(--el-bg-color)">
               <VideoPlay/>
@@ -64,13 +64,6 @@ const toDetails = (id) => {
     font-size: 18px;
     margin-bottom: 5px;
 
-    span {
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 1;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
   }
 
   .title:hover {
@@ -86,17 +79,12 @@ const toDetails = (id) => {
       color: var(--el-text-color-regular);
       line-height: 1.5;
       margin-bottom: 10px;
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 1;
-      overflow: hidden;
-      text-overflow: ellipsis;
     }
 
     .image-box {
       position: relative;
 
-      img {
+      .el-image {
         margin-left: 25px;
         width: 135px;
         height: 75px;

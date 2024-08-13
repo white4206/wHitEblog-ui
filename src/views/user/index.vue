@@ -30,6 +30,12 @@
                   </el-icon>
                 </el-menu-item>
                 <el-menu-item index="">
+                  <span>资源中心</span>
+                  <el-icon class="menu-item-icon">
+                    <ArrowRight/>
+                  </el-icon>
+                </el-menu-item>
+                <el-menu-item index="">
                   <span>待办事项管理</span>
                   <el-icon class="menu-item-icon">
                     <ArrowRight/>

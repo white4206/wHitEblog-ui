@@ -1,12 +1,12 @@
 <template>
   <div class="resource-box">
     <div class="resource-item">
-      <div v-if="contentArticle.cover" class="icon"><img src="@/assets/images/fileType/zip.png"
-                                                         :alt="contentArticle.title"></div>
+      <div v-if="contentArticle.cover" class="icon"><el-image src="/src/assets/images/fileType/zip.png"
+                                                         :alt="contentArticle.title"/></div>
       <div style="display: flex;flex-direction: column;flex:1">
         <el-row class="resource-box-row">
           <el-col :span="24">
-            <span class="title" @click="router.push({path:'/creation/editor',query:{resourceId:contentArticle.id}})">
+            <span class="title text-ellipsis-1" @click="router.push({path:'/creation/editor',query:{resourceId:contentArticle.id}})">
                 <b>{{ contentArticle.title }}</b>
             </span>
           </el-col>
@@ -59,7 +59,7 @@ const props = defineProps({
       height: 50px;
       margin-right: 20px;
 
-      img {
+      .el-image {
         width: 50px;
         height: 50px;
       }
@@ -78,11 +78,6 @@ const props = defineProps({
 
 .title {
   cursor: pointer;
-  display: -webkit-box;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
 }
 
 .title:hover {

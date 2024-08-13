@@ -123,11 +123,6 @@ onMounted(() => {
 
       .abstractText {
         cursor: pointer;
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 1;
-        overflow: hidden;
-        text-overflow: ellipsis;
         font-size: 14px;
         color: var(--el-text-color-regular);
       }

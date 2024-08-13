@@ -5,8 +5,8 @@
       <div class="aside">
         <el-card class="author-card aside-card" shadow="never">
           <div class="author">
-            <img @click="router.push({path:'/personal',query:{author:authorInfo.authorId}})"
-                 :src="authorInfo.avatar" :alt="authorInfo.nickname" class="author-avatar">
+            <el-image @click="router.push({path:'/personal',query:{author:authorInfo.authorId}})"
+                 :src="authorInfo.avatar" :alt="authorInfo.nickname" class="author-avatar"/>
             <div>
               <div class="author-name"
                    @click="router.push({path:'/personal',query:{author:authorInfo.authorId}})">
@@ -83,7 +83,7 @@
             </div>
           </template>
           <ol>
-            <li class="catalogue-item" v-for="item in catalogue" @click="scrollToId(item.id)" :style="{
+            <li class="catalogue-item text-ellipsis-1" v-for="item in catalogue" @click="scrollToId(item.id)" :style="{
                         paddingLeft:cataloguePaddingList[item.level],color:item.read?'var(--el-color-primary)':''}">
               {{ item.title }}
             </li>
@@ -101,7 +101,7 @@ import Affix from "@/components/Affix/index.vue";
 import {useRouter} from "vue-router";
 import {onMounted, ref} from "vue";
 
-const emit = defineEmits(["update:catalogue"])
+const emits = defineEmits(["update:catalogue"])
 const props = defineProps({
   authorInfo: {
     type: Object
@@ -149,7 +149,7 @@ onMounted(() => {
     })
     if (currentScrollIndex.value !== undefined) {
       catalogue.value[currentScrollIndex.value].read = true
-      emit("update:catalogue", catalogue.value)
+      emits("update:catalogue", catalogue.value)
     }
 
     let leftCardHeight
@@ -254,11 +254,6 @@ onMounted(() => {
     margin-bottom: 10px;
     line-height: 1.5;
     cursor: pointer;
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
   }
 
   .catalogue-item:hover {

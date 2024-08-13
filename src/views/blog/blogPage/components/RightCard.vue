@@ -4,7 +4,7 @@
     <div class="right-card-box" ref="rightCardRef">
       <el-card class="dailyRecommendation-box side-card" body-style="padding:0">
         <div class="dailyRecommendation-img-box">
-          <img v-if="dailyRecommendation.cover"
+          <el-image v-if="dailyRecommendation.cover"
                :src="dailyRecommendation.cover"
                :alt="dailyRecommendation.title" class="dailyRecommendation-img"/>
         </div>
@@ -31,15 +31,15 @@
           <div class="recommended-author-info">
             <div class="recommended-author-img-box"
                  @click="router.push({path:'/personal',query:{author:item.authorId}})">
-              <img :src="item.avatar" :alt="item.nickname" class="recommended-author-img">
+              <el-image :src="item.avatar" :alt="item.nickname" class="recommended-author-img"/>
             </div>
             <div>
-              <div class="recommended-author-name"
+              <div class="recommended-author-name text-ellipsis-1"
                    @click="router.push({path:'/personal',query:{author:item.authorId}})">{{
                   item.nickname
                 }}
               </div>
-              <div class="recommended-author-desc">{{ item.description }}</div>
+              <div class="recommended-author-desc text-ellipsis-1">{{ item.description }}</div>
             </div>
           </div>
           <el-button round size="small">关注</el-button>
@@ -168,21 +168,11 @@ onMounted(() => {
 
 .recommended-author-name {
   font-size: 14px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
   cursor: pointer;
 }
 
 .recommended-author-desc {
   font-size: 12px;
   color: var(--el-text-color-regular);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
 }
 </style>

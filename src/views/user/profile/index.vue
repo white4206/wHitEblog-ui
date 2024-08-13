@@ -447,14 +447,14 @@ const handleChange = (rawFile, rawFileList) => {
   if (rawFileList.length > 1) {
     rawFileList.splice(0, 1);
   }
-  if (rawFile.raw?.type !== 'image/jpeg'
-      && rawFile.raw?.type !== 'image/png'
-      && rawFile.raw?.type !== 'image/jpg'
-      && rawFile.raw?.type !== 'image/gif'
+  if (rawFile.raw.type !== 'image/jpeg'
+      && rawFile.raw.type !== 'image/png'
+      && rawFile.raw.type !== 'image/jpg'
+      && rawFile.raw.type !== 'image/gif'
   ) {
     ElMessage.error('头像图片只能是JPG、JPEG、PNG、GIF格式')
     uploadRef.value.clearFiles()
-  } else if (rawFile.raw?.size / 1024 / 1024 > 5) {
+  } else if (rawFile.raw.size / 1024 / 1024 > 5) {
     ElMessage.error('图片大小不能超过5MB!')
     uploadRef.value.clearFiles()
   } else {

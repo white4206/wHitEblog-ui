@@ -16,7 +16,7 @@
                     <el-card v-for="item in 2" shadow="hover">
                       <div class="content-item">
                         <div class="cover">
-                          <img src="/src/assets/images/common/avatar.png" alt="">
+                          <el-image src="/src/assets/images/common/avatar.png" alt=""/>
                         </div>
                         <div class="desc">
                           <div class="title">react项目实现语音识别功能</div>
@@ -37,7 +37,7 @@
                     <el-card v-for="item in 3" shadow="hover">
                       <div class="content-item">
                         <div class="cover">
-                          <img src="/src/assets/images/common/avatar.png" alt="">
+                          <el-image src="/src/assets/images/common/avatar.png" alt=""/>
                         </div>
                         <div class="desc">
                           <div class="title">react项目实现语音识别功能</div>
@@ -58,7 +58,7 @@
                     <el-card v-for="item in 5" shadow="hover">
                       <div class="content-item">
                         <div class="cover">
-                          <img src="/src/assets/images/common/avatar.png" alt="">
+                          <el-image src="/src/assets/images/common/avatar.png" alt=""/>
                         </div>
                         <div class="desc">
                           <div class="title">react项目实现语音识别功能</div>
@@ -87,7 +87,7 @@
               <div class="comment-content">谢谢分享</div>
               <div class="comment-info">
                 <div class="article-card">
-                  <div class="cover"><img src="/src/assets/images/common/avatar.png" alt=""></div>
+                  <div class="cover"><el-image src="/src/assets/images/common/avatar.png" alt=""/></div>
                   <div class="article-info">
                     <div class="title">富文本编辑器CKEditor4简单使用-06（开发自定义插件——中级篇Part11）</div>
                     <div class="info">
@@ -118,7 +118,7 @@
                     <el-card v-for="item in 2" shadow="hover">
                       <div class="content-item">
                         <div class="cover">
-                          <img src="/src/assets/images/common/avatar.png" alt="">
+                          <el-image src="/src/assets/images/common/avatar.png" alt=""/>
                         </div>
                         <div class="desc">
                           <div class="title">react项目实现语音识别功能</div>
@@ -139,7 +139,7 @@
                     <el-card v-for="item in 3" shadow="hover">
                       <div class="content-item">
                         <div class="cover">
-                          <img src="/src/assets/images/common/avatar.png" alt="">
+                          <el-image src="/src/assets/images/common/avatar.png" alt=""/>
                         </div>
                         <div class="desc">
                           <div class="title">react项目实现语音识别功能</div>
@@ -160,10 +160,10 @@
                     <el-card v-for="item in 5" shadow="hover">
                       <div class="content-item">
                         <div class="cover">
-                          <img src="/src/assets/images/common/avatar.png" alt="">
+                          <el-image src="/src/assets/images/common/avatar.png" alt=""/>
                         </div>
                         <div class="desc">
-                          <div class="title">react项目实现语音识别功能</div>
+                          <div class="title text-ellipsis-1">react项目实现语音识别功能</div>
                           <div class="author-info">
                             <span class="avatar"><el-avatar src="/src/assets/images/common/avatar.png" alt=""/></span>
                             <span class="nickname">cachron</span>
@@ -258,7 +258,7 @@ onMounted(() => {
         display: flex;
 
         .cover {
-          img {
+          .el-image {
             width: 140px;
             height: 80px;
           }
@@ -270,11 +270,6 @@ onMounted(() => {
           .title {
             font-weight: bold;
             font-size: 16px;
-            display: -webkit-box;
-            -webkit-box-orient: vertical;
-            -webkit-line-clamp: 2;
-            overflow: hidden;
-            text-overflow: ellipsis;
             margin-bottom: 10px;
           }
 
@@ -333,7 +328,7 @@ onMounted(() => {
       background-color: var(--el-fill-color-lighter);
 
       .cover {
-        img {
+        .el-image {
           width: 105px;
           height: 60px;
         }
@@ -364,7 +359,7 @@ onMounted(() => {
           color: var(--el-text-color-secondary);
 
           .el-avatar {
-            img {
+            .el-image {
               border-radius: 50%;
               width: 20px;
               height: 20px;

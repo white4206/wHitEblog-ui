@@ -8,7 +8,7 @@
               <el-card class="queryForm-card">
                 <template #header>
                   <div class="queryForm-card-header">
-                    <div><img src="" alt=""></div>
+                    <div><el-image src="" alt=""/></div>
                     <div class="title"><span>设置查询参数</span></div>
                   </div>
                 </template>
@@ -38,7 +38,7 @@
               <el-tabs v-model="activeTab" @tab-click="tabClick">
                 <el-tab-pane label="综合" name="default">
                   <div style="display: grid;grid-template-columns: repeat(6,1fr);justify-items:center;;gap:0 20px">
-                    <ResourceItem @click="router.push('/resource/details/1')" v-for="item in 50"/>
+                    <ResourceItem @click="router.push('/resource/details/1')" v-for="item in 1"/>
                   </div>
                 </el-tab-pane>
                 <el-tab-pane label="最新" name="latest">

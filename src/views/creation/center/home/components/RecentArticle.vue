@@ -13,7 +13,7 @@
           </el-tooltip>
           <el-tooltip :content="recentArticle.abstractText" effect="light" placement="bottom-start"
                       :show-after="500">
-            <div class="abstractText">{{ recentArticle.abstractText }}</div>
+            <div class="abstractText text-ellipsis-1">{{ recentArticle.abstractText }}</div>
           </el-tooltip>
         </div>
       </el-col>
@@ -81,11 +81,6 @@ const router = useRouter()
 
     .abstractText {
       cursor: pointer;
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 1;
-      overflow: hidden;
-      text-overflow: ellipsis;
       font-size: 14px;
       color: var(--el-text-color-regular);
     }

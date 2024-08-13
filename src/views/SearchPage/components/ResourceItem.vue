@@ -1,11 +1,11 @@
 <template>
   <div class="search-item-box">
     <div style="display: flex;">
-      <div class="title" @click="toDetails(resourceItem.id)">{{ resourceItem.title }}</div>
+      <div class="title text-ellipsis-1" @click="toDetails(resourceItem.id)">{{ resourceItem.title }}</div>
     </div>
     <div style="display: flex;align-items: center;">
       <div class="text-box">
-        <div class="abstractText">
+        <div class="abstractText text-ellipsis-1">
           {{ resourceItem.abstractText }}
         </div>
         <div class="info-box">
@@ -59,11 +59,6 @@ const toDetails = (id) => {
     font-weight: 500;
     font-size: 18px;
     margin-bottom: 5px;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 1;
-    overflow: hidden;
-    text-overflow: ellipsis;
   }
 
   .title:hover {
@@ -79,11 +74,6 @@ const toDetails = (id) => {
       color: var(--el-text-color-regular);
       line-height: 1.5;
       margin-bottom: 10px;
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 1;
-      overflow: hidden;
-      text-overflow: ellipsis;
     }
 
     .info-box {

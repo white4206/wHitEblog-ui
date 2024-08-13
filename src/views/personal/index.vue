@@ -18,7 +18,7 @@
         </el-col>
         <el-col :span="18">
           <el-card class="content-card">
-            <SearchBox/>
+            <SearchBox :authorId="authorId" v-model:showTabItem="showTabItem"/>
             <el-tabs v-model="activeTab" @tab-change="tabChange" @tab-click="tabClick">
               <el-tab-pane label="最近" name="recently">
                 <div v-if="true" class="empty-box">
@@ -96,11 +96,13 @@
                        :infinite-scroll-immediate="false" :infinite-scroll-delay="1000">
                     <div v-for="article in articleData" class="article-item" @click="toDetails(article.id)">
                       <div style="display: flex">
-                        <div v-if="article.cover" class="cover"><img :src="article.cover" alt=""></div>
+                        <div v-if="article.cover" class="cover">
+                          <el-image :src="article.cover" alt=""/>
+                        </div>
                         <div style="display: flex;flex-direction: column;justify-content: space-between;flex: 1">
                           <div>
-                            <div class="title"><span>{{ article.title }}</span></div>
-                            <div class="abstractText">{{ article.abstractText }}</div>
+                            <div class="title text-ellipsis-1"><span>{{ article.title }}</span></div>
+                            <div class="abstractText text-ellipsis-1">{{ article.abstractText }}</div>
                           </div>
                           <div class="info">
                             <div class="info-detail">
@@ -134,7 +136,7 @@
                 <div class="resource-content">
                   <el-empty v-if="!resourceData.length" description="暂无内容"/>
                   <div v-for="resource in resourceData" class="resource-item">
-                    <div class="title">
+                    <div class="title text-ellipsis-1">
                       很长很长的标题很长很长的标题很长很长的标题很长很长的标题很长很长的标题很长很长的标题很长很长的标题很长很长的标题很长很长的标题很长很长的标题
                     </div>
                     <div class="info">
@@ -153,13 +155,13 @@
                   <el-empty v-if="!videoData.length" description="暂无内容"/>
                   <div v-for="video in videoData" class="video-item">
                     <div class="video-cover">
-                      <img src="/src/assets/images/common/avatar.png" alt="">
+                      <el-image src="/src/assets/images/common/avatar.png" alt=""/>
                       <el-icon :size="24" color="var(--el-bg-color)">
                         <VideoPlay/>
                       </el-icon>
                     </div>
                     <div class="video-info">
-                      <span class="title">标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题</span>
+                      <span class="title text-ellipsis-1">标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题</span>
                       <span class="info">发布视频 {{ '10小时前' }}</span>
                     </div>
                   </div>
@@ -174,7 +176,9 @@
                         <div v-for="attention in attentionData">
                           <div class="author-item">
                             <div class="author">
-                              <div class="avatar"><img src="/src/assets/images/common/avatar.png" alt=""></div>
+                              <div class="avatar">
+                                <el-image src="/src/assets/images/common/avatar.png" alt=""/>
+                              </div>
                               <div class="author-info">
                                 <div class="nickname">my_styles</div>
                                 <div class="desc">欢迎访问</div>
@@ -194,7 +198,9 @@
                         <div v-for="fans in fansData">
                           <div class="author-item">
                             <div class="author">
-                              <div class="avatar"><img src="/src/assets/images/common/avatar.png" alt=""></div>
+                              <div class="avatar">
+                                <el-image src="/src/assets/images/common/avatar.png" alt=""/>
+                              </div>
                               <div class="author-info">
                                 <div class="nickname">my_styles</div>
                                 <div class="desc">欢迎访问</div>
@@ -532,7 +538,7 @@ onUnmounted(() => {
       height: 100px;
       margin-right: 20px;
 
-      img {
+      .el-image {
         width: 175px;
         height: 100px;
       }
@@ -542,11 +548,6 @@ onUnmounted(() => {
       line-height: 1.5;
       margin-bottom: 5px;
       font-size: 18px;
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 1;
-      overflow: hidden;
-      text-overflow: ellipsis;
     }
 
     .title span:hover {
@@ -557,11 +558,6 @@ onUnmounted(() => {
       margin-bottom: 15px;
       font-size: 14px;
       color: var(--el-text-color-regular);
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 1;
-      overflow: hidden;
-      text-overflow: ellipsis;
     }
 
     .info {
@@ -601,11 +597,6 @@ onUnmounted(() => {
     .title {
       line-height: 2;
       font-size: 18px;
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 1;
-      overflow: hidden;
-      text-overflow: ellipsis;
       margin-bottom: 10px;
     }
 
@@ -646,7 +637,7 @@ onUnmounted(() => {
         right: 10px;
       }
 
-      img {
+      .el-image {
         width: 175px;
         height: 100px;
       }
@@ -658,11 +649,6 @@ onUnmounted(() => {
       justify-content: space-between;
 
       .title {
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 1;
-        overflow: hidden;
-        text-overflow: ellipsis;
         font-size: 18px;
       }
 
@@ -699,7 +685,7 @@ onUnmounted(() => {
           border-radius: 50%;
           margin-right: 10px;
 
-          img {
+          .el-image {
             width: 50px;
             height: 50px;
             border-radius: 50%;
@@ -828,6 +814,9 @@ onUnmounted(() => {
 :deep(.el-tabs__item) {
   color: var(--el-text-color-regular);
   font-size: 16px;
+}
+
+:deep(.el-tabs__header.is-top) {
   display: v-bind(showTabItem);
 }
 

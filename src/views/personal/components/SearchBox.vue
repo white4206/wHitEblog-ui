@@ -8,7 +8,7 @@
         <Search/>
       </el-icon>
       <el-input v-model="searchValue" @keyup.enter="searchArticle" placeholder="搜索TA的内容"
-                style="width: 90%;" :autofocus="true"/>
+                style="width: 90%;" ref="searchInputRef"/>
       <span class="search-btn" @click="searchArticle">搜索</span>
       <el-divider direction="vertical"/>
       <span class="cancel-btn" @click="cancelSearch">取消</span>
@@ -20,23 +20,33 @@
 import {ElMessage} from "element-plus";
 import {ref} from "vue";
 
+const emits = defineEmits(["update:showTabItem"])
+const props = defineProps({
+  authorId: {
+    type: Number
+  }
+})
+const searchInputRef = ref()
 const searchValue = ref()
 const isSearch = ref(false)
 
 const searchArticle = () => {
   if (searchValue.value)
     window.open(location.href.split("#")[0] +
-        `#/searchPage?author=${authorId.value}&q=${searchValue.value}`)
+        `#/searchPage?author=${props.authorId}&q=${searchValue.value}`)
   else
     ElMessage.info("请输入搜索内容")
 }
 const cancelSearch = () => {
   isSearch.value = false
-  showTabItem.value = "flex"
+  emits("update:showTabItem", "flex")
 }
 const showSearch = () => {
   isSearch.value = true
-  showTabItem.value = "none"
+  setTimeout(() => {
+    searchInputRef.value.focus()
+  })
+  emits("update:showTabItem", "none")
 }
 </script>
 
@@ -69,6 +79,8 @@ const showSearch = () => {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    box-sizing: border-box;
+    height: 49.8px;
     padding: 10px 20px 0 20px;
 
     :deep(.el-input__wrapper) {

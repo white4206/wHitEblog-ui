@@ -10,16 +10,14 @@
           </div>
         </template>
         <div class="hot-download-box">
-          <div class="hot-download-item" v-for="(item,index) in 10" :key="item.id">
-                        <span v-if="index<3" class="num"><img
+          <div class="hot-download-item" v-for="(item,index) in 1" :key="item.id">
+                        <span v-if="index<3" class="num"><el-image
                             :src="rankSrc(index)"
-                            alt=""></span>
+                            alt=""/></span>
 
             <div v-else class="num">{{ item }}</div>
             <el-link :underline="false" type="info">
-                          <span class="title">
-                            标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题
-                          </span>
+              <span class="title text-ellipsis-1">标题</span>
             </el-link>
           </div>
         </div>
@@ -79,7 +77,6 @@ onMounted(() => {
   .hot-download-box {
     .hot-download-item {
       display: flex;
-      justify-content: space-between;
       margin-top: 20px;
 
       .num {
@@ -92,18 +89,13 @@ onMounted(() => {
         color: var(--el-text-color-secondary);
         margin-right: 10px;
 
-        img {
+        .el-image {
           height: 20px;
           width: 20px;
         }
       }
 
       .title {
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 1;
-        text-overflow: ellipsis;
-        overflow: hidden;
         font-size: 16px;
         color: var(--el-text-color-primary)
       }

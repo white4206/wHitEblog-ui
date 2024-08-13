@@ -50,7 +50,7 @@ import {ref} from "vue";
 
 const props = defineProps({
   articleComments: {
-    type: Object
+    type: Array
   }
 })
 const tableRef = ref()

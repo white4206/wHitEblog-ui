@@ -48,7 +48,7 @@
                 <div class="right-part">
                   <el-avatar/>
                   <div style="flex:1;">
-                    <div class="nickname">HarmonyOS开发者</div>
+                    <div class="nickname text-ellipsis-1">HarmonyOS开发者</div>
                     <div class="fansNum">910粉丝</div>
                     <el-button style="padding: 0 20px" round>关注</el-button>
                   </div>
@@ -97,7 +97,7 @@
                   <div class="content">
                     <div class="item" v-for="item in 5">
                       <div class="cover">
-                        <img src="@/assets/images/common/watermark.png" alt="">
+                        <el-image src="/src/assets/images/common/watermark.png" alt=""/>
                         <el-icon :size="20"
                                  style="z-index:1;position: absolute;left: 50%;top:50%;transform: translate(-50%,-50%)"
                                  color="var(--el-bg-color)">
@@ -112,9 +112,9 @@
                           background:rgba(0,0,0,.3);color:var(--el-color-white);border-radius: 5px">00:00</span>
                       </div>
                       <div class="info">
-                        <div class="title">标题标题标题标题标题标题标题标题标题标题标题标题</div>
+                        <div class="title text-ellipsis-2">标题标题标题标题标题标题标题标题标题标题标题标题</div>
                         <div class="desc">
-                          <span class="nickname">昵称</span>
+                          <span class="nickname text-ellipsis-1">昵称</span>
                           <span class="viewNum">
                             <el-icon>
                               <svg-icon icon-name="videoA"/>
@@ -318,11 +318,6 @@ onMounted(() => {
 
       .nickname {
         font-size: 14px;
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 1;
-        overflow: hidden;
-        text-overflow: ellipsis;
         margin-bottom: 5px;
       }
 
@@ -359,7 +354,7 @@ onMounted(() => {
         width: 125px;
         height: 70px;
 
-        img {
+        .el-image {
           width: 125px;
           height: 70px;
         }
@@ -371,11 +366,6 @@ onMounted(() => {
           line-height: 1.5;
           font-size: 14px;
           font-weight: normal;
-          display: -webkit-box;
-          -webkit-box-orient: vertical;
-          -webkit-line-clamp: 2;
-          overflow: hidden;
-          text-overflow: ellipsis;
         }
 
         .desc {
@@ -386,11 +376,6 @@ onMounted(() => {
           justify-content: space-between;
 
           .nickname {
-            display: -webkit-box;
-            -webkit-box-orient: vertical;
-            -webkit-line-clamp: 1;
-            overflow: hidden;
-            text-overflow: ellipsis;
             color: var(--el-text-color-regular)
           }
 

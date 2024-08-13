@@ -22,7 +22,7 @@
             <CaretBottom/>
           </el-icon>
           <el-icon v-else style="margin-top: -2px;"></el-icon>
-          <span class="text">{{ item.title }}
+          <span class="text text-ellipsis-2">{{ item.title }}
           </span>
         </div>
       </div>
@@ -122,11 +122,6 @@ defineExpose({
 
       .text {
         font-size: 14px;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        text-overflow: ellipsis;
       }
     }
 

@@ -30,7 +30,7 @@
     <div class="record-info">
       <el-button type="info" size="small" link class="info-item"
                  @click="viewRecord('https://beian.mps.gov.cn/#/query/webSearch?code=34130202000761')">
-        <img style="height: 12px;margin-right: 5px" src="@/assets/images/common/record.png" alt="">
+        <el-image style="height: 12px;margin-right: 5px" src="/src/assets/images/common/record.png" alt=""/>
         <span>皖公网安备34130202000761</span>
       </el-button>
       <el-button type="info" size="small" link class="info-item" @click="viewRecord('https://beian.miit.gov.cn')">

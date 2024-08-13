@@ -1,9 +1,9 @@
 <template>
   <el-tabs v-model="activeName" @tab-click="handleClick">
     <el-tab-pane label="推荐" name="recommended" v-infinite-scroll="load" :infinite-scroll-disabled="infinite"
-                 :infinite-scroll-immediate="false" :infinite-scroll-delay="1000" >
+                 :infinite-scroll-immediate="false" :infinite-scroll-delay="1000">
       <BlogItem v-for="item in blogItems" :key="item.id" :blogItem="item"
-                @click="toDetails(item.id)">
+                @click="toDetails(`/blog/details/${item.id}`)">
       </BlogItem>
       <el-empty v-if="noMore && !blogItems.length" description="暂无数据"
                 v-loading="isLoading"/>
@@ -14,7 +14,7 @@
     <el-tab-pane label="热门" name="hot" v-infinite-scroll="loadHot" :infinite-scroll-disabled="hotInfinite"
                  :infinite-scroll-immediate="false" :infinite-scroll-delay="1000">
       <BlogItem v-for="item in hotBlogItems" :key="item.id" :blogItem="item"
-                @click="toDetails(item.id)">
+                @click="toDetails(`/blog/details/${item.id}`)">
       </BlogItem>
       <el-empty v-if="noMore && !blogItems.length" description="暂无数据"
                 v-loading="isLoading"/>
@@ -29,6 +29,7 @@
 import BlogItem from '@/views/home/components/BlogItem.vue';
 import {onMounted, ref} from 'vue'
 import {getArticle} from '@/api/blog.js'
+import toDetails from "@/utils/toDetails.js";
 
 // 推荐文章请求参数
 const queryParam = ref({
@@ -120,9 +121,6 @@ const load = () => {
 const loadHot = () => {
   hotQueryParam.value.pageNum += 1
   getHotData()
-}
-const toDetails = (id) => {
-  window.open(location.href.split("#")[0] + `#/blog/details/${id}`)
 }
 onMounted(() => {
   load()

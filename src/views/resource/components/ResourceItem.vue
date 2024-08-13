@@ -3,16 +3,16 @@
     <div class="resource-item-cover">
       <span class="abstractText">植物大战僵尸杂交版v2.0.88安装程序..</span>
     </div>
-    <img class="background" src="@/assets/images/common/document.png" alt="">
+    <el-image class="background" src="/src/assets/images/common/document.png" alt=""/>
     <div class="content-box">
       <div class="content">
-        <div class="tag">植物大战僵尸杂交版</div>
+        <div class="tag text-ellipsis-1">植物大战僵尸杂交版</div>
         <div class="size">大小: {{ 112 }}MB</div>
-        <div class="title">植物大战僵尸杂交版v2.0.88安装程序</div>
-        <img class="type" src="@/assets/images/fileType/exe.png" alt="">
+        <div class="title text-ellipsis-2">植物大战僵尸杂交版v2.0.88安装程序</div>
+        <el-image class="type" src="/src/assets/images/fileType/exe.png" alt=""/>
       </div>
       <div class="bg">
-        <img class="logo" src="/public/favicon.ico" alt="">
+        <el-image class="logo" src="/public/favicon.ico" alt=""/>
         <div class="bar-box">
           <div style="width: 70%" class="bar"></div>
         </div>
@@ -41,7 +41,7 @@
       </div>
     </div>
     <div class="info">
-      <div class="title">植物大战僵尸杂交版v2.0.88安装程序</div>
+      <div class="title text-ellipsis-2">植物大战僵尸杂交版v2.0.88安装程序</div>
       <div class="num">
         <el-icon size="20" :color="'#ffcc76'">
           <StarFilled/>
@@ -105,11 +105,6 @@
       .tag {
         line-height: 1.5;
         font-size: 12px;
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 1;
-        overflow: hidden;
-        text-overflow: ellipsis;
       }
 
       .size {
@@ -121,11 +116,6 @@
         margin-top: 10px;
         color: #909399;
         font-size: 12px;
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 2;
-        overflow: hidden;
-        text-overflow: ellipsis;
       }
 
       .type {
@@ -178,11 +168,6 @@
     .title {
       margin-top: 10px;
       line-height: 1.5;
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 2;
-      overflow: hidden;
-      text-overflow: ellipsis;
     }
 
     .num {

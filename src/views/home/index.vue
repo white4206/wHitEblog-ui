@@ -10,14 +10,14 @@
               </el-col>
               <el-col :span="8">
                 <div class="right-box">
-                  <div class="blog-headNotice" @click="toDetails(blogHeadNotice.id)">
-                    <img :src="blogHeadNotice.cover" :alt="blogHeadNotice.title"
-                         class="blog-headNotice-img">
-                    <div class="title-link">
+                  <div class="blog-headNotice" @click="toDetails(`/blog/details/${blogHeadNotice.id}`)">
+                    <el-image :src="blogHeadNotice.cover" :alt="blogHeadNotice.title"
+                              class="blog-headNotice-img"/>
+                    <div class="title-link text-ellipsis-2">
                       <h3>{{ blogHeadNotice.title }}</h3>
                     </div>
                     <div>
-                      <p class="title-description">{{ blogHeadNotice.abstractText }}</p>
+                      <p class="title-description text-ellipsis-2">{{ blogHeadNotice.abstractText }}</p>
                     </div>
                   </div>
                   <div class="blog-tools">
@@ -25,7 +25,7 @@
                     <div class="blog-tools-items">
                       <div class="tool-item" v-for="item in blogToolsItems" :key="item.id"
                            @click="goToPage(item.href)">
-                        <img :src="item.logoURL" :alt="item.title" class="tool-item-img">
+                        <el-image :src="item.logoURL" :alt="item.title" class="tool-item-img"/>
                         <div>{{ item.title }}</div>
                       </div>
                     </div>
@@ -65,6 +65,7 @@ import Tabs from '@/views/home/components/Tabs.vue'
 import {onMounted, ref} from 'vue'
 import {getHomePageNotice} from "@/api/common.js";
 import RightCard from "@/views/home/components/RightCard.vue";
+import toDetails from "@/utils/toDetails.js";
 
 const blogHeadNotice = ref({})
 const blogToolsItems = ref([
@@ -96,9 +97,6 @@ const blogToolsItems = ref([
 
 const goToPage = (href) => {
   window.open(href, "__blank")
-}
-const toDetails = (id) => {
-  window.open(location.href.split("#")[0] + `#/blog/details/${id}`)
 }
 onMounted(() => {
   console.log(`(•̀⌓• )シ ( ꒪̇ꌂ̇꒪̇)" 欢迎来到 wHitE 博客 ~
@@ -158,11 +156,6 @@ onMounted(() => {
 .title-link {
   color: var(--el-text-color-primary);
   text-decoration: none;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
 }
 
 .title-link:hover {
@@ -171,12 +164,7 @@ onMounted(() => {
 
 .title-description {
   color: var(--el-text-color-secondary);
-  overflow: hidden;
   margin-top: 5px;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
 }
 
 .bottom {

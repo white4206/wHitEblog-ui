@@ -91,8 +91,8 @@
           <span style="font-size: 18px">最新资源</span>
         </template>
         <div class="newest-content">
-          <div class="newest-item" v-for="item in 10">
-            抓包工具Fiddler可执行文件
+          <div class="newest-item" v-for="item in 2">
+            <el-button style="font-weight: normal;padding: 0" link>抓包工具Fiddler可执行文件</el-button>
           </div>
         </div>
       </el-card>
@@ -107,6 +107,11 @@ import {onMounted, ref} from "vue";
 import {useRouter} from "vue-router";
 import Affix from "@/components/Affix/index.vue";
 
+const props = defineProps({
+  websiteInfoBarRef: {
+    type: Object
+  }
+})
 const rightCardRef = ref()
 const fixHeight = ref()
 const router = useRouter()
@@ -132,6 +137,11 @@ onMounted(() => {
 </script>
 
 <style scoped lang="scss">
+.el-card {
+  border: none;
+  box-shadow: none;
+}
+
 .side-card {
   margin-bottom: 10px;
 }
@@ -221,6 +231,7 @@ onMounted(() => {
 
   .newest-content {
     .newest-item {
+      cursor: pointer;
       font-size: 14px;
       padding: 10px 0;
       border-bottom: 1px solid var(--el-border-color-lighter);

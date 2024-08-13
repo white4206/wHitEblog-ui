@@ -22,7 +22,7 @@
       </el-button>
       <el-button type="info" link class="info-item"
                  @click="viewRecord('https://beian.mps.gov.cn/#/query/webSearch?code=34130202000761')">
-        <img style="height: 14px;margin-right: 5px" src="@/assets/images/common/record.png" alt="">
+        <el-image style="height: 14px;margin-right: 5px" src="/src/assets/images/common/record.png" alt=""/>
         <span>皖公网安备34130202000761</span>
       </el-button>
       <el-button type="info" link class="info-item" @click="viewRecord(`#`)">&copy;2024 By wHitE_

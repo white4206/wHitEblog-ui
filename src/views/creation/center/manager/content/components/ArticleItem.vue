@@ -1,14 +1,14 @@
 <template>
   <div class="article-box">
     <div class="article-item">
-      <div v-if="contentArticle.cover" class="cover"><img :src="contentArticle.cover"
-                                                          :alt="contentArticle.title"></div>
+      <div v-if="contentArticle.cover" class="cover"><el-image :src="contentArticle.cover"
+                                                          :alt="contentArticle.title"/></div>
       <div style="display: flex;flex-direction: column;flex:1">
         <el-row class="article-box-row">
           <el-col :span="20">
             <el-tooltip content="编辑" effect="light"
                         placement="top-start" :show-after="500"><span
-                class="title"
+                class="title text-ellipsis-1"
                 @click="router.push({path:'/creation/editor',query:{articleId:contentArticle.id}})">{{
                 contentArticle.title
               }}</span></el-tooltip>
@@ -89,7 +89,7 @@ const toDetails = (id) => {
       height: 100px;
       margin-right: 20px;
 
-      img {
+      .el-image {
         width: 175px;
         height: 100px;
       }
@@ -103,11 +103,6 @@ const toDetails = (id) => {
 
 .title {
   cursor: pointer;
-  display: -webkit-box;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
 }
 
 .title:hover {

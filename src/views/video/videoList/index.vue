@@ -1,6 +1,6 @@
 <template>
   <div class="header-background">
-    <img :src="headerBackground"/>
+    <el-image :src="headerBackground"/>
     <div class="header-cover"/>
   </div>
   <div style="background: var(--el-bg-color);">
@@ -85,14 +85,14 @@
           <div class="main-content">
             <div class="recommended-swiper">
               <img ref="swiperRef"
-                   style="position: absolute;opacity: 0;z-index:-1;width: 100%;vertical-align: middle"
-                   src="/src/assets/images/common/placeholder.png"
-                   alt="">
+                        style="position: absolute;opacity: 0;z-index:-1;width: 100%;vertical-align: middle"
+                        src="/src/assets/images/common/placeholder.png"
+                        alt=""/>
               <el-carousel @change="carouselChange" ref="carouselRef" arrow="never" indicator-position="none"
                            :height="swiperHeight">
                 <el-carousel-item v-for="item in carouselList" :key="item">
                   <div class="swiper-item" ref="swiperItemRef">
-                    <img :src="item.src" alt="">
+                    <el-image :src="item.src" alt=""/>
                   </div>
                 </el-carousel-item>
               </el-carousel>
@@ -100,7 +100,9 @@
                 <div class="mask"></div>
                 <div class="info">
                   <div class="title">
-                    <div class="text">人类与猿族的命运交织之战！</div>
+                    <div class="text text-ellipsis-1">
+                      人类与猿族的命运交织之战！人类与猿族的命运交织之战！人类与猿族的命运交织之战！人类与猿族的命运交织之战！
+                    </div>
                     <div class="operation">
                       <el-icon :size="14" class="arrow" @click="goPrev">
                         <ArrowLeftBold/>
@@ -123,7 +125,7 @@
             </div>
             <div class="item" v-for="item in 100">
               <div class="cover">
-                <img src="@/assets/images/common/watermark.png" alt="">
+                <el-image src="/src/assets/images/common/watermark.png" alt=""/>
                 <div class="mask">
                   <div class="left-part">
                   <span>
@@ -145,7 +147,8 @@
                 </div>
               </div>
               <div class="desc">
-                <div class="title">2024年后普通程序员千万不能碰的5种编程语言，马士兵一个视频给你讲透！</div>
+                <div class="title text-ellipsis-2">2024年后普通程序员千万不能碰的5种编程语言，马士兵一个视频给你讲透！
+                </div>
                 <div class="info">
                   <el-tag v-if="true" style="padding: 0 5px;margin-right: 5px" size="small" type="warning">已关注
                   </el-tag>
@@ -265,7 +268,7 @@ onMounted(() => {
   max-width: 2040px;
   margin: 0 auto;
 
-  img {
+  .el-image {
     vertical-align: middle;
     height: 100%;
     width: 100%;
@@ -446,7 +449,7 @@ onMounted(() => {
       }
 
       .swiper-item {
-        img {
+        .el-image {
           border-radius: 5px 5px 0 0;
           width: 100%;
         }
@@ -487,6 +490,8 @@ onMounted(() => {
             }
 
             .operation {
+              min-width: 90px;
+
               .arrow {
                 cursor: pointer;
                 margin-right: 15px;
@@ -631,7 +636,7 @@ onMounted(() => {
       .cover {
         position: relative;
 
-        img {
+        .el-image {
           width: 100%;
           height: 100%;
           min-height: 145px;
@@ -681,11 +686,6 @@ onMounted(() => {
           font-size: 16px;
           font-weight: 500;
           padding-right: 30px;
-          display: -webkit-box;
-          -webkit-box-orient: vertical;
-          -webkit-line-clamp: 2;
-          overflow: hidden;
-          text-overflow: ellipsis;
         }
 
         .info {

@@ -14,7 +14,7 @@
           <el-tooltip content="测试博客测试博客测试博客测试博客测试博客测试博客测试博客测试博客测试博客测试博客测试博客测试博
                     客测试博客测试博客测试博客测试博客测试博客" effect="light" placement="bottom-start"
                       :show-after="500">
-            <div class="abstractText">
+            <div class="abstractText text-ellipsis-1">
               测试博客测试博客测试博客测试博客测试博客测试博客测试博客测试博客测试博客测试博客测试博客测试博
               客测试博客测试博客测试博客测试博客测试博客
             </div>
@@ -74,11 +74,6 @@
 
     .abstractText {
       cursor: pointer;
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 1;
-      overflow: hidden;
-      text-overflow: ellipsis;
       font-size: 14px;
       color: var(--el-text-color-regular);
     }

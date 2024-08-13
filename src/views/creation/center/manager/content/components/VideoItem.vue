@@ -2,7 +2,7 @@
   <div class="video-box">
     <div class="video-item">
       <div v-if="contentArticle.cover" class="cover">
-        <img :src="contentArticle.cover" :alt="contentArticle.title">
+        <el-image :src="contentArticle.cover" :alt="contentArticle.title"/>
         <el-icon :size="32" style="position: absolute;left: 50%;top:50%;transform: translate(-50%,-50%)"
                  color="var(--el-bg-color)">
           <CaretRight/>
@@ -14,7 +14,7 @@
       <div style="display: flex;flex-direction: column;flex:1">
         <el-row class="video-box-row">
           <el-col :span="20">
-                          <span class="title"
+                          <span class="title text-ellipsis-1"
                                 @click="router.push({path:'/creation/editor',query:{videoId:contentArticle.id}})">
                             {{ contentArticle.title }}
                           </span>
@@ -90,7 +90,7 @@ const props = defineProps({
       height: 125px;
       margin-right: 20px;
 
-      img {
+      .el-image {
         width: 225px;
         height: 125px;
       }
@@ -113,11 +113,6 @@ const props = defineProps({
 
 .title {
   cursor: pointer;
-  display: -webkit-box;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
 }
 
 .title:hover {

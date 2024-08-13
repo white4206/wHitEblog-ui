@@ -85,7 +85,7 @@ const props = defineProps({
   },
 });
 
-const emit = defineEmits([
+const emits = defineEmits([
   "update:dragDialog",
   "submitDrag",
   "checkoutChange",
@@ -95,26 +95,26 @@ const emit = defineEmits([
 
 // 关闭
 const confirm = () => {
-  emit("update:dragDialog", false);
+  emits("update:dragDialog", false);
 };
 // 提交
 const submitDrag = () => {
-  emit("submitDrag");
+  emits("submitDrag");
 };
 // 复选框勾选
 const checkoutChange = (element, index) => {
-  emit("checkoutChange", element, index);
+  emits("checkoutChange", element, index);
 };
 // 拖动前
 const onDragStart = () => {
-  emit("onDragStart");
+  emits("onDragStart");
 };
 // 拖动后
 const onDragEnd = (added, removed, moved) => {
   console.log(added)
   console.log(removed)
   console.log(moved)
-  emit("onDragEnd");
+  emits("onDragEnd");
 };
 </script>
 <style lang="scss">
@@ -177,7 +177,7 @@ const onDragEnd = (added, removed, moved) => {
       text-decoration: underline;
       padding-left: 20px;
 
-      img {
+      .el-image {
         width: 15px;
         height: 20px;
         margin-top: 10px;

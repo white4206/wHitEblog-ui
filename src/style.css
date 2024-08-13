@@ -43,10 +43,6 @@ a {
     z-index: 100;
 }
 
-/*.el-loading-mask {*/
-/*    border-radius: 16px;*/
-/*}*/
-
 ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
@@ -67,3 +63,38 @@ a {
     min-height: calc(100vh - 120px);
 }
 
+.text-ellipsis-1 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.text-ellipsis-2 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-colum {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-vertical {
+    display: flex;
+    align-items: center;
+}
+
+.flex-colum-vertical {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

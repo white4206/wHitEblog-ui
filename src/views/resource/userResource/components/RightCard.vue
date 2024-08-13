@@ -24,6 +24,9 @@
           <el-button style="width: 45%;height: 28px" round>私信</el-button>
         </div>
       </el-card>
+      <el-card class="side-card">
+        <el-button type="primary" round style="width: 100%" size="large">上传资源</el-button>
+      </el-card>
       <WebsiteInfoCard/>
     </div>
     <!-- </el-affix>-->
@@ -54,6 +57,11 @@ onMounted(() => {
 </script>
 
 <style scoped lang="scss">
+.el-card {
+  border: none;
+  box-shadow: none;
+}
+
 .side-card {
   margin-bottom: 10px;
 }

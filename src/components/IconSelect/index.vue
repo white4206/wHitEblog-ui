@@ -38,7 +38,7 @@ for (const path in modules) {
 }
 const iconList = ref(icons);
 const iconName = ref('');
-const emit = defineEmits(['selected']);
+const emits = defineEmits(['selected']);
 
 const filterIcons = () => {
   iconList.value = icons;

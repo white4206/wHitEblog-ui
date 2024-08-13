@@ -35,7 +35,7 @@ import {nextTick, onMounted, ref} from "vue";
 import {getArticleTag} from "@/api/blog.js";
 import {useRoute, useRouter} from "vue-router";
 
-const emit = defineEmits(["update:tagId", "update:childTagId", "getData", "reset"])
+const emits = defineEmits(["update:tagId", "update:childTagId", "getData", "reset"])
 const props = defineProps({
   tagId: {
     type: Number,
@@ -64,7 +64,7 @@ const outTagBar = () => {
   tagBarHeight.value = "20px"
 }
 const querySelectChange = () => {
-  emit("update:childTagId", childTagId.value)
+  emits("update:childTagId", childTagId.value)
 }
 const selectTag = (id, e) => {
   // 如果存在上一个选中的标签则移除其激活状态
@@ -96,10 +96,10 @@ const selectTag = (id, e) => {
     lastTagTarget.value = e.target;
     router.push({query: {childTag: childTagId.value || undefined, tag: id}})
   }
-  emit("reset")
+  emits("reset")
   tagId.value = id;
-  emit("update:tagId", tagId.value)
-  emit("getData")
+  emits("update:tagId", tagId.value)
+  emits("getData")
 }
 
 onMounted(() => {

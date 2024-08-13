@@ -65,7 +65,7 @@ import CommentBox from "@/views/message/components/CommentBox.vue";
 import FansBox from "@/views/message/components/FansBox.vue";
 import FavBox from "@/views/message/components/FavBox.vue";
 import NoticeBox from "@/views/message/components/NoticeBox.vue";
-import MessageBox from "@/views/message/components/MessageBox.vue";
+import MessageBox from "@/views/message/components/_deprecated_MessageBox.vue";
 
 const router = useRouter()
 const route = useRoute()
@@ -109,15 +109,5 @@ onMounted(() => {
   }
 }
 
-.more-item {
-  .item {
-    cursor: pointer;
-    text-align: center;
-    padding: 10px;
-  }
 
-  .item:hover {
-    background-color: var(--el-color-primary-light-9);
-  }
-}
 </style>
