@@ -5,7 +5,7 @@
       <div class="footer">
         <div class="footer-author">
           <el-image @click="router.push({path:'/personal',query:{author:authorInfo.authorId}})"
-               :src="authorInfo.avatar" :alt="authorInfo.nickname" class="footer-author-avatar"/>
+                    :src="authorInfo.avatar" :alt="authorInfo.nickname" class="footer-author-avatar"/>
           <div @click="router.push({path:'/personal',query:{author:authorInfo.authorId}})"
                class="footer-author-name">
             <h4>{{ authorInfo.nickname }}</h4>
@@ -15,13 +15,13 @@
         <div class="footer-operation">
           <div class="footer-operation-item" @click="ElMessage.info('点赞功能暂未支持')">
             <el-icon :size="16">
-              <Like/>
+              <svg-icon icon-name="like"/>
             </el-icon>
             <span>{{ articleDetail.likeNum }}</span>
           </div>
           <div class="footer-operation-item" @click="ElMessage.info('点踩功能暂未支持')">
             <el-icon :size="16">
-              <Unlike/>
+              <svg-icon icon-name="unlike"/>
             </el-icon>
             <span>{{ articleDetail.dislikeNum }}</span>
           </div>
@@ -55,6 +55,7 @@
 import {ElMessage} from "element-plus";
 import {useRouter} from "vue-router";
 import Affix from "@/components/Affix/index.vue";
+import SvgIcon from "@/components/SvgIcon/index.vue";
 
 const router = useRouter()
 const props = defineProps({
