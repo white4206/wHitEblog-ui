@@ -37,7 +37,7 @@ onMounted(() => {
 <style scoped lang="scss">
 .el-card {
   border: none;
-  box-shadow: none;
+  box-shadow: none;;
 }
 
 .side-card {

@@ -5,7 +5,9 @@
       <el-table-column>
         <template #header>
           <div style="display: flex;justify-content: space-between">
-            <el-button link type="primary" @click="tableRef.toggleAllSelection()">全选</el-button>
+            <el-button link type="primary" @click="tableRef.toggleAllSelection()">
+              {{ tableRef.getSelectionRows().length === articleComments.length ? '取消选中' : '全选' }}
+            </el-button>
             <el-button link type="primary">一键公开</el-button>
           </div>
         </template>

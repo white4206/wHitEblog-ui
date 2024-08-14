@@ -1,5 +1,5 @@
 <template>
-  <div class="sidebar-container">
+  <el-card class="sidebar-container" shadow="never">
     <Affix :offset="80" :z-index="99">
       <!-- <el-affix :offset="80" z-index="99">-->
       <div class="title-btn">
@@ -74,7 +74,7 @@
       </div>
       <!-- </el-affix>-->
     </Affix>
-  </div>
+  </el-card>
 </template>
 
 <script setup>
@@ -101,17 +101,17 @@ onMounted(() => {
 
 <style scoped lang="scss">
 .sidebar-container {
-  overflow: visible;
   width: 256px;
-  min-height: calc(100vh - 100px);
-  margin-right: 20px;
+  position: fixed;
+  overflow: visible;
+  min-height: calc(100vh - 60px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 
   .menu {
     margin: 0 auto;
-    width: 220px;
+    width: 100%;
 
     :deep(.el-menu ) {
       border: none;

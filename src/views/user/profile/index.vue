@@ -177,9 +177,9 @@
                     不感兴趣
                   </div>
                   <span class="selected-tags">
-                    <el-tag v-for="tag in selectedUninterestedTags" @close="removeUninterestedTag(tag)" closable>{{
-                        tag.name
-                      }}</el-tag>
+                    <el-tag v-for="tag in selectedUninterestedTags" @close="removeUninterestedTag(tag)" closable>
+                      {{ tag.name }}
+                    </el-tag>
                   </span>
                   <div class="addTag">
                     <el-button style="border: none" :icon="Plus" size="small" type="primary" plain/>

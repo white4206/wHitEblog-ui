@@ -19,7 +19,7 @@
           </el-icon>
           <div style="margin-top: 10px">传资源</div>
         </div>
-        <div class="item">
+        <div class="item" @click="router.push('/creation/post')">
           <el-icon :size="18">
             <svg-icon icon-name="videoC"/>
           </el-icon>

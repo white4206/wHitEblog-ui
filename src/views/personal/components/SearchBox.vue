@@ -23,7 +23,7 @@ import {ref} from "vue";
 const emits = defineEmits(["update:showTabItem"])
 const props = defineProps({
   authorId: {
-    type: Number
+    type: String
   }
 })
 const searchInputRef = ref()

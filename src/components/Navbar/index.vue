@@ -52,7 +52,8 @@
   </el-menu>
   <el-menu
       v-if="activeIndex==='/creation'&&route.path!=='/creation/editor'
-      &&route.path!=='/creation/upload/single'&&route.path!=='/creation/upload/batch'"
+      &&route.path!=='/creation/upload/single'&&route.path!=='/creation/upload/batch'
+      &&route.path!=='/creation/post'"
       :default-active="activeIndex" mode="horizontal"
       router :ellipsis="false" class="menu"
   >
@@ -75,7 +76,7 @@
   </el-menu>
   <el-menu
       v-if="route.path==='/creation/editor'||route.path==='/creation/upload/single'
-      ||route.path==='/creation/upload/batch'"
+      ||route.path==='/creation/upload/batch'||route.path==='/creation/post'"
       :default-active="activeIndex" mode="horizontal"
       router :ellipsis="false" class="menu"
   >

@@ -32,7 +32,8 @@
                 <el-input v-model="queryParam.keyword" placeholder="请输入关键词"></el-input>
               </el-form-item>
               <el-form-item style="margin-bottom: 10px">
-                <el-button style="background:transparent;padding: 0 25px" type="primary" plain @click="search">搜索
+                <el-button class="transparent-btn" style="background:transparent;padding: 0 25px" type="primary" plain
+                           @click="search">搜索
                 </el-button>
               </el-form-item>
             </el-form>
@@ -49,7 +50,7 @@
                 </el-button>
               </div>
               <div v-else>
-                <ArticleManager v-for="contentArticle in contentArticles" :contentArticle="contentArticle"/>
+                <ArticleItem v-for="contentArticle in contentArticles" :contentArticle="contentArticle"/>
                 <div class="noMore" v-if="noMore &&  isLoading" v-loading="isLoading">
                   {{ isLoading ? "..." : "暂时没有更多了..." }}
                 </div>
@@ -167,7 +168,7 @@
 import {onMounted, ref} from 'vue'
 import {useRoute, useRouter} from "vue-router";
 import {getContentArticle} from "@/api/blog.js"
-import ArticleManager from "@/views/creation/center/manager/content/components/ArticleItem.vue";
+import ArticleItem from "@/views/creation/center/manager/content/components/ArticleItem.vue";
 import UploadResourceItem from "@/views/creation/center/manager/content/components/UploadResourceItem.vue";
 import VideoItem from "@/views/creation/center/manager/content/components/VideoItem.vue";
 import DownloadResourceItem from "@/views/creation/center/manager/content/components/DownloadResourceItem.vue";

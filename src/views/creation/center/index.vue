@@ -1,12 +1,12 @@
 <template>
-  <el-main>
-    <div class="container">
+  <el-container>
+    <el-aside>
       <Sidebar/>
-      <div class="content">
-        <RouterView></RouterView>
-      </div>
-    </div>
-  </el-main>
+    </el-aside>
+    <el-main>
+      <RouterView></RouterView>
+    </el-main>
+  </el-container>
   <el-backtop :right="10" :bottom="120"/>
 </template>
 
@@ -15,17 +15,19 @@ import Sidebar from "@/views/creation/center/components/Sidebar.vue";
 </script>
 
 <style scoped lang="scss">
-.el-main {
-  overflow:visible;
-  max-width: 1800px;
-}
-
-.container {
+.el-container {
   display: flex;
 
-  .content {
-    width: 100%;
-    margin-right: 50px;
+  .el-aside {
+    width: 256px;
+  }
+
+  .el-main {
+    margin: 0 auto;
+    overflow: visible;
+    max-width: 1500px;
+    min-width: 1000px;
   }
 }
+
 </style>

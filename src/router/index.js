@@ -121,6 +121,11 @@ const routes = [
                 ],
             },
             {
+                path: "post",
+                meta: {title: "创作视频"},
+                component: () => import("@/views/creation/post/index.vue"),
+            },
+            {
                 path: "",
                 meta: {title: "创作中心"},
                 component: () => import("@/views/creation/center/index.vue"),

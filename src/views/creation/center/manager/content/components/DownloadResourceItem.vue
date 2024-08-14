@@ -32,7 +32,7 @@
         </el-row>
       </div>
     </div>
-    <el-divider/>
+    <el-divider border-style="dashed"/>
   </div>
 </template>
 

@@ -1,8 +1,10 @@
 <template>
   <div class="article-box">
     <div class="article-item">
-      <div v-if="contentArticle.cover" class="cover"><el-image :src="contentArticle.cover"
-                                                          :alt="contentArticle.title"/></div>
+      <div v-if="contentArticle.cover" class="cover">
+        <el-image :src="contentArticle.cover"
+                  :alt="contentArticle.title"/>
+      </div>
       <div style="display: flex;flex-direction: column;flex:1">
         <el-row class="article-box-row">
           <el-col :span="20">
@@ -58,7 +60,7 @@
         </el-row>
       </div>
     </div>
-    <el-divider/>
+    <el-divider border-style="dashed"/>
   </div>
 </template>
 
@@ -68,7 +70,7 @@ import {useRouter} from "vue-router";
 const router = useRouter()
 const props = defineProps({
   contentArticle: {
-    type:Object
+    type: Object
   }
 })
 

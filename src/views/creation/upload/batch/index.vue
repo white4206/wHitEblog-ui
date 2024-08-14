@@ -10,7 +10,7 @@
               </div>
               <el-upload
                   class="uploader" drag action="#" :show-file-list="false" :limit="100"
-                  :auto-upload="false" :on-change="uploadChange" multiple
+                  :auto-upload="false" :on-change="uploadChange" multiple v-if="!uploadForm.uploadFiles.length"
               >
                 <div
                     class="el-upload__text"
@@ -29,31 +29,170 @@
                 </div>
               </el-upload>
 
-              <el-table ref="tableRef" :data="uploadForm.uploadFiles">
+              <el-table
+                  style="margin-top: 15px" ref="tableRef"
+                  :data="uploadForm.uploadFiles" v-else
+              >
                 <el-table-column type="selection" width="30"/>
                 <el-table-column>
                   <template #header>
                     <div style="display: flex;justify-content: space-between">
-                      <el-button link type="primary">资源名称</el-button>
-                      <el-button link type="primary" @click="tableRef.toggleAllSelection()">全选</el-button>
+                      <span style="color: var(--el-text-color-primary);font-weight: normal">资源名称</span>
+                      <el-button link type="primary" @click="tableRef.toggleAllSelection()">
+                        {{ tableRef.getSelectionRows().length === uploadForm.uploadFiles.length ? '取消选中' : '全选' }}
+                      </el-button>
                     </div>
                   </template>
                   <template #default="scope">
                     <div class="upload-item">
                       <div class="info">
                         <el-image src="/src/assets/images/fileType/image.png"/>
-                        <div class="title text-ellipsis-1">{{ scope.row.name }}</div>
+                        <div class="title text-ellipsis-1">{{ scope.row.file.name }}</div>
                       </div>
                       <div class="operation">
-                        <el-button link>编辑</el-button>
+                        <el-button link style="margin-right: 10px" @click="scope.row.isEdit=!scope.row.isEdit">
+                          {{ scope.row.isEdit ? '收起' : '编辑' }}
+                        </el-button>
                         <el-icon :size="16" color="var(--el-text-color-secondary)">
                           <CircleCloseFilled/>
                         </el-icon>
                       </div>
                     </div>
+                    <el-collapse-transition>
+                      <div v-show="scope.row.isEdit" class="upload-form">
+                        <el-form :model="uploadForm" ref="uploadRef" :rules="uploadRules" label-width="90px">
+                          <el-form-item label="资源名称" prop="name">
+                            <el-input
+                                style="flex:1;"
+                                type="textarea" :rows="1" placeholder="推荐格式：知识领域+技术关键词+用途"
+                                :maxlength="64" show-word-limit v-model="uploadForm.name" resize="none"/>
+                          </el-form-item>
+                          <el-form-item label="资源描述" prop="description">
+                            <el-input
+                                style="flex:1;"
+                                type="textarea" :rows="2"
+                                placeholder="推荐格式：内容概要+适用人群+使用场景及目标+其他说明"
+                                :maxlength="500" show-word-limit v-model="uploadForm.description"/>
+                          </el-form-item>
+                          <el-form-item label="资源标签" prop="tag">
+                            <div>
+                              <div class="add-tag-select">
+                                <el-tag style="margin-right: 10px" v-for="item in addTagList" size="large" type="info"
+                                        closable>
+                                  {{ item.name }}
+                                </el-tag>
+                                <el-select
+                                    v-model="uploadForm.tag" multiple :multiple-limit="1" ref="addTagSelectRef"
+                                    filterable allow-create remote reserve-keyword placeholder=""
+                                    v-show="isAddTag" :remote-method="remoteMethod" :loading="loading"
+                                    style="width: 150px;margin-right: 10px" @blur="addTagBlur" @change="addTagChange"
+                                >
+                                  <el-option
+                                      v-for="item in tagOptions" :key="item.value"
+                                      :label="item.label" :value="item.value"
+                                  />
+                                </el-select>
+                                <el-button style="font-size: 12px;margin-right:10px"
+                                           v-if="!isAddTag && addTagList.length<5"
+                                           @click="addTag">
+                                  <el-icon>
+                                    <Plus/>
+                                  </el-icon>
+                                  添加标签
+                                </el-button>
+                                <span class="tips" v-if="addTagList.length<5">按回车Enter创建标签</span>
+                              </div>
+                              <div style="margin-top: 5px">
+                                <span class="tips">可修改或添加标签，最多可添加5个标签</span>
+                              </div>
+                            </div>
+                          </el-form-item>
+                          <el-form-item label="所属分类" prop="category" style="align-items: center">
+                            <el-cascader style="width: 100%" size="large" v-model="uploadForm.category" clearable/>
+                          </el-form-item>
+                        </el-form>
+                      </div>
+                    </el-collapse-transition>
                   </template>
                 </el-table-column>
               </el-table>
+
+              <el-dialog v-model="isBatchEdit" width="750" :show-close="false">
+                <template #header>
+                  <div class="dialog-header">
+                    <div><span style="font-weight: bold;font-size: 14px">批量修改</span></div>
+                    <div>
+                      <span>修改将应用于</span>
+                      <span class="num">{{ uploadForm.uploadFiles.length }}</span>
+                      <span>个已选文件</span>
+                    </div>
+                  </div>
+                </template>
+                <div class="upload-form">
+                  <el-form :model="uploadForm" ref="uploadRef" :rules="uploadRules" label-width="90px">
+                    <el-form-item label="资源描述" prop="description">
+                      <el-input
+                          style="flex:1;"
+                          type="textarea" :rows="2"
+                          placeholder="推荐格式：内容概要+适用人群+使用场景及目标+其他说明"
+                          :maxlength="500" show-word-limit v-model="uploadForm.description"/>
+                    </el-form-item>
+                    <el-form-item label="资源标签" prop="tag">
+                      <div>
+                        <div class="add-tag-select">
+                          <el-tag style="margin-right: 10px" v-for="item in addTagList" size="large" type="info"
+                                  closable>
+                            {{ item.name }}
+                          </el-tag>
+                          <el-select
+                              v-model="uploadForm.tag" multiple :multiple-limit="1" ref="addTagSelectRef"
+                              filterable allow-create remote reserve-keyword placeholder=""
+                              v-show="isAddTag" :remote-method="remoteMethod" :loading="loading"
+                              style="width: 150px;margin-right: 10px" @blur="addTagBlur" @change="addTagChange"
+                          >
+                            <el-option
+                                v-for="item in tagOptions" :key="item.value"
+                                :label="item.label" :value="item.value"
+                            />
+                          </el-select>
+                          <el-button style="font-size: 12px;margin-right:10px"
+                                     v-if="!isAddTag && addTagList.length<5"
+                                     @click="addTag">
+                            <el-icon>
+                              <Plus/>
+                            </el-icon>
+                            添加标签
+                          </el-button>
+                          <span class="tips" v-if="addTagList.length<5">按回车Enter创建标签</span>
+                        </div>
+                        <div style="margin-top: 5px">
+                          <span class="tips">可修改或添加标签，最多可添加5个标签</span>
+                        </div>
+                      </div>
+                    </el-form-item>
+                    <el-form-item label="所属分类" prop="category" style="align-items: center">
+                      <el-cascader style="width: 100%" size="large" v-model="uploadForm.category" clearable/>
+                    </el-form-item>
+                  </el-form>
+                </div>
+                <template #footer>
+                  <el-button size="large" round>取消</el-button>
+                  <el-button type="primary" size="large" round>保存</el-button>
+                </template>
+              </el-dialog>
+
+              <div v-if="uploadForm.uploadFiles.length" class="footer">
+                <div class="info-text">
+                  <span>已选择</span>
+                  <span class="num">{{ uploadForm.uploadFiles.length }}</span>
+                  <span>个（已完成上传3个）</span>
+                </div>
+                <div class="btn">
+                  <el-button round size="large" @click="isBatchEdit=true">批量编辑</el-button>
+                  <el-button type="primary" round size="large">确认提交</el-button>
+                </div>
+              </div>
+
             </el-card>
           </el-col>
           <el-col :span="6" justify="center">
@@ -70,6 +209,7 @@ import RightCard from "@/views/creation/upload/batch/components/RightCard.vue";
 import {ref} from "vue";
 import {ElMessage} from "element-plus";
 
+const isBatchEdit = ref(false)
 const tableRef = ref()
 const addTagSelectRef = ref()
 const isAddTag = ref(false)
@@ -119,12 +259,8 @@ const uploadChange = (rawFile, rawFileList) => {
     ElMessage.warning(rawFile.raw.name)
     ElMessage.error("单个文件大小超出限制")
   } else {
-    uploadForm.value.uploadFiles.push(rawFile)
+    uploadForm.value.uploadFiles.push({file: rawFile, isEdit: false})
   }
-  if (uploadForm.value.uploadFiles.length) {
-
-  }
-  console.log(uploadForm.value.uploadFiles)
 }
 </script>
 
@@ -195,15 +331,8 @@ const uploadChange = (rawFile, rawFileList) => {
     }
   }
 
-  .upload-form {
-
-    .tips {
-      font-size: 12px;
-      color: var(--el-text-color-placeholder);
-    }
-  }
-
   .upload-item {
+    margin-top: 10px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -222,6 +351,60 @@ const uploadChange = (rawFile, rawFileList) => {
     .info {
       .title {
         color: var(--el-text-color-regular)
+      }
+    }
+  }
+
+  .upload-form {
+    margin-top: 20px;
+
+    .tips {
+      font-size: 12px;
+      color: var(--el-text-color-placeholder);
+    }
+  }
+
+  :deep(.el-table-column--selection.el-table__cell) {
+    vertical-align: top;
+  }
+
+  :deep(.el-table__row .el-table-column--selection) {
+    .cell {
+      margin-top: 20px;
+    }
+  }
+
+  :deep(.el-table tbody tr:hover>td) {
+    background-color: #FFFFFF !important;
+  }
+
+  .el-dialog {
+    .dialog-header {
+      font-size: 14px;
+      display: flex;
+      justify-content: space-between;
+
+      .num {
+        color: var(--el-color-primary)
+      }
+    }
+
+    .upload-form {
+      padding: 0 20px;
+    }
+  }
+
+  .footer {
+    margin-top: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .info-text {
+      font-size: 14px;
+
+      .num {
+        color: var(--el-color-primary);
       }
     }
   }
