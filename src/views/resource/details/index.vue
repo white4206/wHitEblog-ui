@@ -58,7 +58,7 @@
                       <span>o: {{ 56 }}个</span>
                     </div>
                     <div class="bg">
-                      <el-image class="logo" src="/public/favicon.ico" alt=""/>
+                      <img class="logo" src="/public/favicon.ico" alt=""/>
                       <div class="bar-box">
                         <div style="width: 70%" class="bar"></div>
                       </div>
@@ -188,7 +188,7 @@
                   </el-form-item>
                   <div class="operation-btn">
                     <el-icon color="var(--el-text-color-secondary)" :size="22">
-                      <svg-icon icon-name="emoji"/>
+                      <SvgIcon icon-name="emoji"/>
                     </el-icon>
                     <el-button style="padding: 0 20px" type="primary" round>评论</el-button>
                   </div>

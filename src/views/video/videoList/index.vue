@@ -1,6 +1,6 @@
 <template>
   <div class="header-background">
-    <el-image :src="headerBackground"/>
+    <img :src="headerBackground"/>
     <div class="header-cover"/>
   </div>
   <div style="background: var(--el-bg-color);">
@@ -16,7 +16,7 @@
                     <div class="icon-box">
                       <el-button size="large" circle>
                         <el-icon :size="45">
-                          <svg-icon icon-name="icon"/>
+                          <SvgIcon icon-name="icon"/>
                         </el-icon>
                       </el-button>
                       <span>动态</span>
@@ -24,7 +24,7 @@
                     <div class="icon-box">
                       <el-button type="danger" size="large" circle>
                         <el-icon :size="24">
-                          <svg-icon icon-name="heatA"/>
+                          <SvgIcon icon-name="heatA"/>
                         </el-icon>
                       </el-button>
                       <span>热门</span>
@@ -37,7 +37,7 @@
                   <div class="channel-item-right">
                     <div class="item" v-for="item in 6">
                       <el-icon :size="14">
-                        <svg-icon icon-name="live"/>
+                        <SvgIcon icon-name="live"/>
                       </el-icon>
                       <span>直播</span>
                     </div>
@@ -48,7 +48,7 @@
                     <div class="icon-box">
                       <el-button size="large" link>
                         <el-icon :size="22">
-                          <svg-icon icon-name="icon"/>
+                          <SvgIcon icon-name="icon"/>
                         </el-icon>
                         <span>动态</span>
                       </el-button>
@@ -56,7 +56,7 @@
                     <div class="icon-box">
                       <el-button size="large" link>
                         <el-icon :size="22" color="var(--el-text-color-secondary)">
-                          <svg-icon icon-name="heatA"/>
+                          <SvgIcon icon-name="heatA"/>
                         </el-icon>
                         <span>热门</span>
                       </el-button>
@@ -85,14 +85,14 @@
           <div class="main-content">
             <div class="recommended-swiper">
               <img ref="swiperRef"
-                        style="position: absolute;opacity: 0;z-index:-1;width: 100%;vertical-align: middle"
-                        src="/src/assets/images/common/placeholder.png"
-                        alt=""/>
+                   style="position: absolute;opacity: 0;z-index:-1;width: 100%;vertical-align: middle"
+                   src="@/assets/images/common/placeholder.png"
+                   alt=""/>
               <el-carousel @change="carouselChange" ref="carouselRef" arrow="never" indicator-position="none"
                            :height="swiperHeight">
                 <el-carousel-item v-for="item in carouselList" :key="item">
                   <div class="swiper-item" ref="swiperItemRef">
-                    <el-image :src="item.src" alt=""/>
+                    <img :src="item.src" alt=""/>
                   </div>
                 </el-carousel-item>
               </el-carousel>
@@ -125,18 +125,18 @@
             </div>
             <div class="item" v-for="item in 100">
               <div class="cover">
-                <el-image src="/src/assets/images/common/watermark.png" alt=""/>
+                <img src="@/assets/images/common/placeholder.png" alt=""/>
                 <div class="mask">
                   <div class="left-part">
                   <span>
                     <el-icon :size="16" color="var(--el-bg-color)">
-                      <svg-icon icon-name="videoA"/>
+                      <SvgIcon icon-name="videoA"/>
                     </el-icon>
                     298.1万
                   </span>
                     <span>
                     <el-icon :size="16" color="var(--el-bg-color)">
-                      <svg-icon icon-name="danmu"/>
+                      <SvgIcon icon-name="danmu"/>
                     </el-icon>
                     2677
                   </span>
@@ -153,7 +153,7 @@
                   <el-tag v-if="true" style="padding: 0 5px;margin-right: 5px" size="small" type="warning">已关注
                   </el-tag>
                   <el-icon :size="16" v-else>
-                    <svg-icon icon-name="up"/>
+                    <SvgIcon icon-name="up"/>
                   </el-icon>
                   <span class="nickname">昵称</span>
                   <span> · </span>
@@ -268,7 +268,7 @@ onMounted(() => {
   max-width: 2040px;
   margin: 0 auto;
 
-  .el-image {
+  img {
     vertical-align: middle;
     height: 100%;
     width: 100%;
@@ -449,7 +449,7 @@ onMounted(() => {
       }
 
       .swiper-item {
-        .el-image {
+        img {
           border-radius: 5px 5px 0 0;
           width: 100%;
         }
@@ -636,7 +636,7 @@ onMounted(() => {
       .cover {
         position: relative;
 
-        .el-image {
+        img {
           width: 100%;
           height: 100%;
           min-height: 145px;

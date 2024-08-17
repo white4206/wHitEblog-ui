@@ -80,7 +80,7 @@
                       <Close/>
                     </el-icon>
                   </div>
-                  <el-image v-if="imageUrl" :src="imageUrl" class="cover"/>
+                  <img v-if="imageUrl" :src="imageUrl" class="cover"/>
                   <el-icon v-else class="avatar-uploader-icon">
                     <Plus/>
                   </el-icon>

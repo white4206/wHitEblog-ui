@@ -5,7 +5,7 @@
       <div class="right-part">
         <el-button type="primary" link>
           <el-icon>
-            <svg-icon icon-name="people"/>
+            <SvgIcon icon-name="people"/>
           </el-icon>
           粉丝数据
         </el-button>

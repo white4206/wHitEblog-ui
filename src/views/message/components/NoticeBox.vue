@@ -25,9 +25,9 @@
         </div>
         <div class="content-html">
           <span data-v-0947769e="">
-            <el-image
+            <img
                 style="width: 90px;height: 90px"
-                src="/src/assets/images/common/watermark.png"
+                src="@/assets/images/common/placeholder.png"
                 alt="图片"/><br>欢迎来到CSDN，发布首篇文章参与抽奖，即有机会获得红包、CSDN定制周边！
             <a target="_blank" href="https://mp.csdn.net/activity/newclock/">点击报名</a> 参与新人创作打卡挑战赛，还有更多奖品及流量扶持等你来。扫码入群，与C友一起玩转博客。</span>
         </div>

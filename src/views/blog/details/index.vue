@@ -61,7 +61,7 @@
                         </div>
                         <div class="base-info-item like" @click="ElMessage.info('点赞信功能暂未支持')">
                           <el-icon :size="16">
-                            <svg-icon icon-name="like"/>
+                            <SvgIcon icon-name="like"/>
                           </el-icon>
                           <span>{{ "点赞" + data.articleDetail.likeNum }}</span>
                         </div>

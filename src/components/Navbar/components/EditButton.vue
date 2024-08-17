@@ -9,19 +9,19 @@
       <div class="post-item">
         <div class="item" @click="router.push('/creation/editor')">
           <el-icon :size="18">
-            <svg-icon icon-name="articleA"/>
+            <SvgIcon icon-name="articleA"/>
           </el-icon>
           <div style="margin-top: 10px">写文章</div>
         </div>
         <div class="item" @click="router.push('/creation/upload')">
           <el-icon :size="18">
-            <svg-icon icon-name="resource"/>
+            <SvgIcon icon-name="resource"/>
           </el-icon>
           <div style="margin-top: 10px">传资源</div>
         </div>
         <div class="item" @click="router.push('/creation/post')">
           <el-icon :size="18">
-            <svg-icon icon-name="videoC"/>
+            <SvgIcon icon-name="videoC"/>
           </el-icon>
           <div style="margin-top: 10px">发视频</div>
         </div>
@@ -44,7 +44,7 @@
         </div>
       </div>
       <el-divider style="margin: 15px 0"/>
-      <el-image style="width: 100%;height: 100px" src=""/>
+      <img src="" alt="">
     </el-popover>
   </div>
 </template>

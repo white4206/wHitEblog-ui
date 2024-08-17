@@ -250,7 +250,7 @@ const selectedUninterestedTags = ref([])
 const uploadRef = ref()
 const uploadFiles = ref()
 const router = useRouter()
-const avatarUrl = ref(new URL("@/assets/images/avatar.png", import.meta.url).href)
+const avatarUrl = ref(new URL("@/assets/images/common/avatar.png", import.meta.url).href)
 const userInfoDetailForm = ref({
   nickname: null,
   username: null,

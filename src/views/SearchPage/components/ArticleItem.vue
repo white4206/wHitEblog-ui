@@ -18,7 +18,7 @@
             </div>
             <div v-if="blogItem.likeNum" class="num">
               <el-icon :size="14">
-                <svg-icon icon-name="like"/>
+                <SvgIcon icon-name="like"/>
               </el-icon>
               <span>{{ blogItem.likeNum }}</span>
             </div>
@@ -127,7 +127,7 @@ const toDetails = (id) => {
   .image-box {
     position: relative;
 
-    .el-image {
+    img {
       margin-left: 25px;
       width: 133px;
       height: 76px;

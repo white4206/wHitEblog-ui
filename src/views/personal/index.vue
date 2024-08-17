@@ -97,7 +97,7 @@
                     <div v-for="article in articleData" class="article-item" @click="toDetails(article.id)">
                       <div style="display: flex">
                         <div v-if="article.cover" class="cover">
-                          <el-image :src="article.cover" alt=""/>
+                          <img :src="article.cover" alt=""/>
                         </div>
                         <div style="display: flex;flex-direction: column;justify-content: space-between;flex: 1">
                           <div>
@@ -155,7 +155,7 @@
                   <el-empty v-if="!videoData.length" description="暂无内容"/>
                   <div v-for="video in videoData" class="video-item">
                     <div class="video-cover">
-                      <el-image src="/src/assets/images/common/avatar.png" alt=""/>
+                      <img src="@/assets/images/common/avatar.png" alt=""/>
                       <el-icon :size="24" color="var(--el-bg-color)">
                         <VideoPlay/>
                       </el-icon>
@@ -177,7 +177,7 @@
                           <div class="author-item">
                             <div class="author">
                               <div class="avatar">
-                                <el-image src="/src/assets/images/common/avatar.png" alt=""/>
+                                <img src="@/assets/images/common/avatar.png" alt=""/>
                               </div>
                               <div class="author-info">
                                 <div class="nickname">my_styles</div>
@@ -199,7 +199,7 @@
                           <div class="author-item">
                             <div class="author">
                               <div class="avatar">
-                                <el-image src="/src/assets/images/common/avatar.png" alt=""/>
+                                <img src="@/assets/images/common/avatar.png" alt=""/>
                               </div>
                               <div class="author-info">
                                 <div class="nickname">my_styles</div>
@@ -538,7 +538,7 @@ onUnmounted(() => {
       height: 100px;
       margin-right: 20px;
 
-      .el-image {
+      img {
         width: 175px;
         height: 100px;
       }
@@ -637,7 +637,7 @@ onUnmounted(() => {
         right: 10px;
       }
 
-      .el-image {
+      img {
         width: 175px;
         height: 100px;
       }
@@ -685,7 +685,7 @@ onUnmounted(() => {
           border-radius: 50%;
           margin-right: 10px;
 
-          .el-image {
+          img {
             width: 50px;
             height: 50px;
             border-radius: 50%;

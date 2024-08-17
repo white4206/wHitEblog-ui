@@ -9,11 +9,11 @@
               <div class="operation-box">
                 <div class="left-part">
                   <span>
-                  <el-icon><svg-icon icon-name="share"/></el-icon>
+                  <el-icon><SvgIcon icon-name="share"/></el-icon>
                   分享
                 </span>
                   <span>
-                  <el-icon><svg-icon icon-name="like"/></el-icon>
+                  <el-icon><SvgIcon icon-name="like"/></el-icon>
                   点赞
                 </span>
                   <span>
@@ -35,7 +35,7 @@
                   <div class="title">League of Legends (TM) Client</div>
                   <div class="info">
                     <el-icon :size="20">
-                      <svg-icon icon-name="videoA"/>
+                      <SvgIcon icon-name="videoA"/>
                     </el-icon>
                     <span>6</span>
                     <span> · </span>
@@ -76,7 +76,7 @@
                     <div class="operation">
                       <el-button link type="primary">回复</el-button>
                       <el-icon style="margin-left: 25px">
-                        <svg-icon icon-name="like"/>
+                        <SvgIcon icon-name="like"/>
                       </el-icon>
                     </div>
                   </div>
@@ -97,7 +97,7 @@
                   <div class="content">
                     <div class="item" v-for="item in 5">
                       <div class="cover">
-                        <el-image src="/src/assets/images/common/watermark.png" alt=""/>
+                        <img src="@/assets/images/common/placeholder.png" alt=""/>
                         <el-icon :size="20"
                                  style="z-index:1;position: absolute;left: 50%;top:50%;transform: translate(-50%,-50%)"
                                  color="var(--el-bg-color)">
@@ -117,7 +117,7 @@
                           <span class="nickname text-ellipsis-1">昵称</span>
                           <span class="viewNum">
                             <el-icon>
-                              <svg-icon icon-name="videoA"/>
+                              <SvgIcon icon-name="videoA"/>
                             </el-icon>
                             {{ 14 }}
                           </span>
@@ -354,7 +354,7 @@ onMounted(() => {
         width: 125px;
         height: 70px;
 
-        .el-image {
+        img {
           width: 125px;
           height: 70px;
         }

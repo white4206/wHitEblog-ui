@@ -1,6 +1,6 @@
 <template>
   <div class="resource-item">
-    <el-image src="/src/assets/images/fileType/zip.png" alt=""/>
+    <img src="@/assets/images/fileType/zip.png" alt=""/>
     <div class="right-part">
       <div class="title">基于stm32f407的示波器+FFT频谱分析</div>
       <div class="description">
@@ -25,7 +25,7 @@
   padding-bottom: 15px;
   border-bottom: 1px solid var(--el-border-color-light);
 
-  .el-image {
+  img {
     width: 50px;
     height: 50px;
   }

@@ -8,7 +8,7 @@
               <el-card class="queryForm-card">
                 <template #header>
                   <div class="queryForm-card-header">
-                    <div><el-image src="" alt=""/></div>
+                    <div><img src="" alt=""/></div>
                     <div class="title"><span>设置查询参数</span></div>
                   </div>
                 </template>
@@ -63,7 +63,7 @@
 <script setup>
 import WebsiteInfoBar from "@/components/WebsiteInfoBar/index.vue";
 import {onMounted, ref} from "vue";
-import ResourceItem from "@/views/resource/components/ResourceItem.vue";
+import ResourceItem from "@/views/resource/ResourcePage/components/ResourceItem.vue";
 import {useRoute, useRouter} from "vue-router";
 import RightCard from "@/views/resource/ResourcePage/components/RightCard.vue";
 

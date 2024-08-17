@@ -6,10 +6,10 @@
         :before-change="beforeChange"
     >
       <template #active-action>
-        <svg-icon icon-class="dark-icon" icon-name="moon"/>
+        <SvgIcon icon-class="dark-icon" icon-name="moon"/>
       </template>
       <template #inactive-action>
-        <svg-icon icon-class="light-icon" icon-name="sun"/>
+        <SvgIcon icon-class="light-icon" icon-name="sun"/>
       </template>
     </el-switch>
   </div>

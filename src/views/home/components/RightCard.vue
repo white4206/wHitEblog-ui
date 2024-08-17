@@ -42,7 +42,7 @@
         <div v-for="item in relatedLinkItems" :key="item.id" class="related-link-item"
              @click="jumpLink(item.linkUrl)">
           <div class="related-link-item-img-box">
-            <el-image :src="item.icon" :alt="item.title"
+            <img :src="item.icon" :alt="item.title"
                       class="related-link-item-img"/>
           </div>
           <span class="related-link-item-title">{{ item.title }}</span>

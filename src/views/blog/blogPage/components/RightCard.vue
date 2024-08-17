@@ -4,7 +4,7 @@
     <div class="right-card-box" ref="rightCardRef">
       <el-card class="dailyRecommendation-box side-card" body-style="padding:0">
         <div class="dailyRecommendation-img-box">
-          <el-image v-if="dailyRecommendation.cover"
+          <img v-if="dailyRecommendation.cover"
                :src="dailyRecommendation.cover"
                :alt="dailyRecommendation.title" class="dailyRecommendation-img"/>
         </div>
@@ -31,7 +31,7 @@
           <div class="recommended-author-info">
             <div class="recommended-author-img-box"
                  @click="router.push({path:'/personal',query:{author:item.authorId}})">
-              <el-image :src="item.avatar" :alt="item.nickname" class="recommended-author-img"/>
+              <img :src="item.avatar" :alt="item.nickname" class="recommended-author-img"/>
             </div>
             <div>
               <div class="recommended-author-name text-ellipsis-1"

@@ -2,7 +2,7 @@
   <div class="article-box">
     <div class="article-item">
       <div v-if="contentArticle.cover" class="cover">
-        <el-image :src="contentArticle.cover"
+        <img :src="contentArticle.cover"
                   :alt="contentArticle.title"/>
       </div>
       <div style="display: flex;flex-direction: column;flex:1">
@@ -91,7 +91,7 @@ const toDetails = (id) => {
       height: 100px;
       margin-right: 20px;
 
-      .el-image {
+      img {
         width: 175px;
         height: 100px;
       }

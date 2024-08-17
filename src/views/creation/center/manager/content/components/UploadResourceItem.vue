@@ -1,7 +1,7 @@
 <template>
   <div class="resource-box">
     <div class="resource-item">
-      <div v-if="contentArticle.cover" class="icon"><el-image src="/src/assets/images/fileType/zip.png"
+      <div v-if="contentArticle.cover" class="icon"><img src="@/assets/images/fileType/zip.png"
                                                          :alt="contentArticle.title"/></div>
       <div style="display: flex;flex-direction: column;flex:1">
         <el-row class="resource-box-row">
@@ -80,7 +80,7 @@ const props = defineProps({
       height: 50px;
       margin-right: 20px;
 
-      .el-image {
+      img {
         width: 50px;
         height: 50px;
       }

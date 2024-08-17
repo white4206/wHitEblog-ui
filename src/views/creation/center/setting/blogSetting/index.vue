@@ -35,7 +35,7 @@
               <el-switch v-model="blogSetting.isAddWaterMark"/>
               <span style="margin-left: 10px">作品配图自动添加水印</span>
               <div v-if="blogSetting.isAddWaterMark">
-                <el-image style="width: 430px;height: 240px" src="/src/assets/images/common/watermark.png" alt=""/>
+                <img style="width: 430px;height: 240px" src="./watermark.png" alt=""/>
               </div>
             </div>
           </el-form-item>
@@ -53,7 +53,7 @@
                 <el-option/>
               </el-select>
               <div class="codeStyle-preview">
-                <el-image src="/src/views/creation/center/setting/blogSetting/atom-one-light.png" alt=""/>
+                <img src="./atom-one-light.png" alt=""/>
               </div>
             </div>
           </el-form-item>
@@ -64,7 +64,7 @@
                            placeholder="请选择版权声明方式">
                   <el-option/>
                 </el-select>
-                <el-image style="margin-left: 20px;height: 15px;" src="/src/assets/images/common/BY-SA.png"/>
+                <img style="margin-left: 20px;height: 15px;" src="@/assets/images/common/BY-SA.png"/>
                 <el-icon style="margin-left: 5px" :size="16">
                   <QuestionFilled/>
                 </el-icon>
@@ -176,7 +176,7 @@ onMounted(() => {
   width: 760px;
   height: 330px;
 
-  .el-image {
+  img {
     border-radius: 5px;
     width: 760px;
     height: 330px;

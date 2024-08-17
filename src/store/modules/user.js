@@ -6,7 +6,7 @@ import {ref} from "vue";
 const useUserStore = defineStore("user", () => {
     const isLogin = ref(false)
     const userInfo = ref({
-        avatar: new URL("@/assets/images/avatar.png", import.meta.url).href
+        avatar: new URL("@/assets/images/common/avatar.png", import.meta.url).href
     })
     const userLogin = (user) => {
         return new Promise((resolve, reject) => {
@@ -22,7 +22,7 @@ const useUserStore = defineStore("user", () => {
         return new Promise((resolve, reject) => {
             logout().then(res => {
                 isLogin.value = false
-                userInfo.value = {avatar: new URL("@/assets/images/avatar.png", import.meta.url).href}
+                userInfo.value = {avatar: new URL("@/assets/images/common/avatar.png", import.meta.url).href}
                 resolve(res)
             })
         })
@@ -49,7 +49,7 @@ const useUserStore = defineStore("user", () => {
             if (userInfo.value.avatar)
                 userInfo.value.avatar = import.meta.env.VITE_APP_BASE_API + userInfo.value.avatar
             else
-                userInfo.value.avatar = new URL("@/assets/images/avatar.png", import.meta.url).href
+                userInfo.value.avatar = new URL("@/assets/images/common/avatar.png", import.meta.url).href
         })
     }
     return {

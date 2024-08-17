@@ -5,7 +5,7 @@
       <div class="aside">
         <el-card class="author-card aside-card" shadow="never">
           <div class="author">
-            <el-image @click="router.push({path:'/personal',query:{author:authorInfo.authorId}})"
+            <img @click="router.push({path:'/personal',query:{author:authorInfo.authorId}})"
                  :src="authorInfo.avatar" :alt="authorInfo.nickname" class="author-avatar"/>
             <div>
               <div class="author-name"

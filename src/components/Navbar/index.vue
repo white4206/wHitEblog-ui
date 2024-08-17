@@ -21,7 +21,7 @@
                   class="search-input">
           <template #prefix>
             <el-icon :size="25">
-              <svg-icon icon-name="searchLogo"/>
+              <SvgIcon icon-name="searchLogo"/>
             </el-icon>
           </template>
         </el-input>
@@ -115,19 +115,19 @@
         <div class="creation-menu-subtitle">切换创作体裁</div>
         <div class="creation-menu-item" @click="router.push('/creation/editor')">
           <el-icon>
-            <svg-icon icon-name="article"/>
+            <SvgIcon icon-name="article"/>
           </el-icon>
           <span>文章</span>
         </div>
         <div class="creation-menu-item" @click="router.push('/creation/upload')">
           <el-icon>
-            <svg-icon icon-name="upload"/>
+            <SvgIcon icon-name="upload"/>
           </el-icon>
           <span>上传资源</span>
         </div>
         <div class="creation-menu-item" @click="router.push('/creation/post')">
           <el-icon>
-            <svg-icon icon-name="video"/>
+            <SvgIcon icon-name="video"/>
           </el-icon>
           <span>视频</span>
         </div>

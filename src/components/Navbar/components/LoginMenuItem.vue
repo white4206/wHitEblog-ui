@@ -40,7 +40,7 @@
         <el-divider/>
         <span class="user-option-item" @click="userLogout">
              <el-icon :size="14">
-                <svg-icon icon-name="exit"/>
+                <SvgIcon icon-name="exit"/>
              </el-icon>
               退出
             </span>

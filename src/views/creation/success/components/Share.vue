@@ -7,7 +7,7 @@
           <el-button circle>
             <template #icon>
               <el-icon :size="18">
-                <svg-icon icon-name="wechat"/>
+                <SvgIcon icon-name="wechat"/>
               </el-icon>
             </template>
           </el-button>
@@ -15,7 +15,7 @@
         </div>
       </template>
       <div class="wechat-share-box">
-        <el-image src="/src/assets/images/QRcode.png"></el-image>
+        <img src="@/assets/images/common/avatar.png"/>
         <div>微信扫码分享</div>
       </div>
     </el-popover>
@@ -23,7 +23,7 @@
       <el-button circle>
         <template #icon>
           <el-icon :size="18">
-            <svg-icon icon-name="qq"/>
+            <SvgIcon icon-name="qq"/>
           </el-icon>
         </template>
       </el-button>
@@ -33,7 +33,7 @@
       <el-button circle color="#f2c83e">
         <template #icon>
           <el-icon :size="18">
-            <svg-icon icon-name="link"/>
+            <SvgIcon icon-name="link"/>
           </el-icon>
         </template>
       </el-button>
@@ -46,7 +46,7 @@
           <el-button circle color="#f95e5c">
             <template #icon>
               <el-icon :size="18">
-                <svg-icon icon-name="placard"/>
+                <SvgIcon icon-name="placard"/>
               </el-icon>
             </template>
           </el-button>
@@ -55,7 +55,7 @@
       </template>
       <div class="placard-share-box">
         <div>注: 截图获取海报</div>
-        <el-image src=""></el-image>
+        <img src=""/>
       </div>
     </el-popover>
     <el-popover :hide-after="0" popper-style="padding: 10px 0 10px 0;min-width: auto;" placement="top" :width="120"
@@ -65,7 +65,7 @@
           <el-button circle color="#ccccd8">
             <template #icon>
               <el-icon :size="18">
-                <svg-icon icon-name="more"/>
+                <SvgIcon icon-name="more"/>
               </el-icon>
             </template>
           </el-button>
@@ -75,13 +75,13 @@
       <div class="more-option">
         <div class="more-option-item">
           <el-icon :size="16">
-            <svg-icon icon-name="fans"/>
+            <SvgIcon icon-name="fans"/>
           </el-icon>
           <span>分享给粉丝</span>
         </div>
         <div class="more-option-item">
           <el-icon :size="16">
-            <svg-icon icon-name="phone"/>
+            <SvgIcon icon-name="phone"/>
           </el-icon>
           <el-popover :hide-after="0" popper-style="padding: 10px 0 10px 0;min-width: auto;" placement="left"
                       :width="120"
@@ -90,14 +90,14 @@
               <span>APP分享</span>
             </template>
             <div class="app-share-box">
-              <el-image src="/src/assets/images/QRcode.png"></el-image>
-              <div>微信扫码分享</div>
+              <img src="@/assets/images/common/avatar.png"/>
+              <div>APP扫码分享</div>
             </div>
           </el-popover>
         </div>
         <div class="more-option-item">
           <el-icon :size="16">
-            <svg-icon icon-name="microBlog"/>
+            <SvgIcon icon-name="microBlog"/>
           </el-icon>
           <span>微博分享</span>
         </div>

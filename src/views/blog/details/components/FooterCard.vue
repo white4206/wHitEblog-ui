@@ -4,7 +4,7 @@
     <el-card class="footer-card" shadow="never">
       <div class="footer">
         <div class="footer-author">
-          <el-image @click="router.push({path:'/personal',query:{author:authorInfo.authorId}})"
+          <img @click="router.push({path:'/personal',query:{author:authorInfo.authorId}})"
                :src="authorInfo.avatar" :alt="authorInfo.nickname" class="footer-author-avatar"/>
           <div @click="router.push({path:'/personal',query:{author:authorInfo.authorId}})"
                class="footer-author-name">

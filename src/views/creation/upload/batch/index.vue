@@ -46,7 +46,7 @@
                   <template #default="scope">
                     <div class="upload-item">
                       <div class="info">
-                        <el-image src="/src/assets/images/fileType/image.png"/>
+                        <img src="@/assets/images/fileType/image.png"/>
                         <div class="title text-ellipsis-1">{{ scope.row.file.name }}</div>
                       </div>
                       <div class="operation">
@@ -317,7 +317,7 @@ const uploadChange = (rawFile, rawFileList) => {
       justify-content: center;
       font-size: 14px;
 
-      .el-image {
+      img {
         width: 40px;
         height: 40px;
       }
@@ -337,7 +337,7 @@ const uploadChange = (rawFile, rawFileList) => {
     align-items: center;
     justify-content: space-between;
 
-    .el-image {
+    img {
       width: 45px;
       height: 45px;
       margin-right: 20px;

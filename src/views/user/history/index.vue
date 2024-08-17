@@ -16,12 +16,12 @@
                     <el-card v-for="item in 2" shadow="hover">
                       <div class="content-item">
                         <div class="cover">
-                          <el-image src="/src/assets/images/common/avatar.png" alt=""/>
+                          <img src="/src/assets/images/common/avatar.png" alt=""/>
                         </div>
                         <div class="desc">
                           <div class="title">react项目实现语音识别功能</div>
                           <div class="author-info">
-                            <span class="avatar"><el-avatar src="/src/assets/images/common/avatar.png" alt=""/></span>
+                            <span class="avatar"><el-avatar src="@/assets/images/common/avatar.png" alt=""/></span>
                             <span class="nickname">cachron</span>
                           </div>
                         </div>
@@ -37,12 +37,12 @@
                     <el-card v-for="item in 3" shadow="hover">
                       <div class="content-item">
                         <div class="cover">
-                          <el-image src="/src/assets/images/common/avatar.png" alt=""/>
+                          <img src="@/assets/images/common/avatar.png" alt=""/>
                         </div>
                         <div class="desc">
                           <div class="title">react项目实现语音识别功能</div>
                           <div class="author-info">
-                            <span class="avatar"><el-avatar src="/src/assets/images/common/avatar.png" alt=""/></span>
+                            <span class="avatar"><el-avatar src="@/assets/images/common/avatar.png" alt=""/></span>
                             <span class="nickname">cachron</span>
                           </div>
                         </div>
@@ -58,12 +58,12 @@
                     <el-card v-for="item in 5" shadow="hover">
                       <div class="content-item">
                         <div class="cover">
-                          <el-image src="/src/assets/images/common/avatar.png" alt=""/>
+                          <img src="@/assets/images/common/avatar.png" alt=""/>
                         </div>
                         <div class="desc">
                           <div class="title">react项目实现语音识别功能</div>
                           <div class="author-info">
-                            <span class="avatar"><el-avatar src="/src/assets/images/common/avatar.png" alt=""/></span>
+                            <span class="avatar"><el-avatar src="@/assets/images/common/avatar.png" alt=""/></span>
                             <span class="nickname">cachron</span>
                           </div>
                         </div>
@@ -87,7 +87,7 @@
               <div class="comment-content">谢谢分享</div>
               <div class="comment-info">
                 <div class="article-card">
-                  <div class="cover"><el-image src="/src/assets/images/common/avatar.png" alt=""/></div>
+                  <div class="cover"><img src="@/assets/images/common/avatar.png" alt=""/></div>
                   <div class="article-info">
                     <div class="title">富文本编辑器CKEditor4简单使用-06（开发自定义插件——中级篇Part11）</div>
                     <div class="info">
@@ -95,7 +95,7 @@
                       <span>·</span>
                       <span>{{ 2 }} 评论</span>
                       <span>·</span>
-                      <span class="avatar"><el-avatar src="/src/assets/images/common/avatar.png" alt=""/></span>
+                      <span class="avatar"><el-avatar src="@/assets/images/common/avatar.png" alt=""/></span>
                       <span class="nickname">cachron</span>
                     </div>
                   </div>
@@ -118,12 +118,12 @@
                     <el-card v-for="item in 2" shadow="hover">
                       <div class="content-item">
                         <div class="cover">
-                          <el-image src="/src/assets/images/common/avatar.png" alt=""/>
+                          <img src="@/assets/images/common/avatar.png" alt=""/>
                         </div>
                         <div class="desc">
                           <div class="title">react项目实现语音识别功能</div>
                           <div class="author-info">
-                            <span class="avatar"><el-avatar src="/src/assets/images/common/avatar.png" alt=""/></span>
+                            <span class="avatar"><el-avatar src="@/assets/images/common/avatar.png" alt=""/></span>
                             <span class="nickname">cachron</span>
                           </div>
                         </div>
@@ -139,12 +139,12 @@
                     <el-card v-for="item in 3" shadow="hover">
                       <div class="content-item">
                         <div class="cover">
-                          <el-image src="/src/assets/images/common/avatar.png" alt=""/>
+                          <img src="@/assets/images/common/avatar.png" alt=""/>
                         </div>
                         <div class="desc">
                           <div class="title">react项目实现语音识别功能</div>
                           <div class="author-info">
-                            <span class="avatar"><el-avatar src="/src/assets/images/common/avatar.png" alt=""/></span>
+                            <span class="avatar"><el-avatar src="@/assets/images/common/avatar.png" alt=""/></span>
                             <span class="nickname">cachron</span>
                           </div>
                         </div>
@@ -160,12 +160,12 @@
                     <el-card v-for="item in 5" shadow="hover">
                       <div class="content-item">
                         <div class="cover">
-                          <el-image src="/src/assets/images/common/avatar.png" alt=""/>
+                          <img src="@/assets/images/common/avatar.png" alt=""/>
                         </div>
                         <div class="desc">
                           <div class="title text-ellipsis-1">react项目实现语音识别功能</div>
                           <div class="author-info">
-                            <span class="avatar"><el-avatar src="/src/assets/images/common/avatar.png" alt=""/></span>
+                            <span class="avatar"><el-avatar src="@/assets/images/common/avatar.png" alt=""/></span>
                             <span class="nickname">cachron</span>
                           </div>
                         </div>
@@ -258,7 +258,7 @@ onMounted(() => {
         display: flex;
 
         .cover {
-          .el-image {
+          img {
             width: 140px;
             height: 80px;
           }
@@ -328,7 +328,7 @@ onMounted(() => {
       background-color: var(--el-fill-color-lighter);
 
       .cover {
-        .el-image {
+        img {
           width: 105px;
           height: 60px;
         }
@@ -359,7 +359,7 @@ onMounted(() => {
           color: var(--el-text-color-secondary);
 
           .el-avatar {
-            .el-image {
+            img {
               border-radius: 50%;
               width: 20px;
               height: 20px;

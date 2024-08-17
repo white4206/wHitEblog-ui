@@ -30,7 +30,7 @@
                       <span>，小于10G</span>
                     </div>
                     <div v-else class="upload-file">
-                      <el-image src="/src/assets/images/fileType/zip.png"/>
+                      <img src="@/assets/images/fileType/zip.png"/>
                       <span class="title text-ellipsis-1">{{ uploadForm.uploadFile.name }}</span>
                       <el-link type="primary" :underline="false">重新上传</el-link>
                     </div>
@@ -214,7 +214,7 @@ const uploadChange = (rawFile, rawFileList) => {
         justify-content: center;
         font-size: 14px;
 
-        .el-image {
+        img {
           width: 40px;
           height: 40px;
         }

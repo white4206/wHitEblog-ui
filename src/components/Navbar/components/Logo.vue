@@ -1,6 +1,6 @@
 <template>
   <div class="logo-box" @click="clickLogo">
-    <svg-icon icon-class="logo" icon-name="logo" size="45"/>
+    <SvgIcon icon-class="logo" icon-name="logo" size="45"/>
     <span>wHitE 博客</span>
   </div>
 </template>

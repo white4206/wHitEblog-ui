@@ -12,7 +12,7 @@
           <div class="info-box-left">
             <div class="num">
               <el-icon :size="16">
-                <svg-icon icon-name="heat"/>
+                <SvgIcon icon-name="heat"/>
               </el-icon>
               <span>{{ resourceItem.viewNum }}</span>
             </div>
@@ -116,7 +116,7 @@ const toDetails = (id) => {
   .image-box {
     position: relative;
 
-    .el-image {
+    img {
       margin-left: 25px;
       width: 135px;
       height: 75px;

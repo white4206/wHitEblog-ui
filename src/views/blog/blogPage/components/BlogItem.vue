@@ -1,7 +1,7 @@
 <template>
   <div class="blog-item">
     <div class="left">
-      <el-image
+      <img
           v-if="blogItem.cover" :src="blogItem.cover"
           :alt="blogItem.title" class="left-img"
       />
@@ -17,7 +17,7 @@
         <div class="isLike">
           <div class="like" @click.stop="ElMessage.info('点赞功能暂未支持')">
             <el-icon :size="16">
-              <svg-icon icon-name="like"/>
+              <SvgIcon icon-name="like"/>
             </el-icon>
             <span class="number">{{ blogItem.likeNum }} 赞</span>
           </div>
@@ -26,7 +26,7 @@
               @click.stop="ElMessage.info('点踩功能暂未支持')"
           >
             <el-icon :size="16">
-              <svg-icon icon-name="unlike"/>
+              <SvgIcon icon-name="unlike"/>
             </el-icon>
             <span class="number">{{ blogItem.dislikeNum }} 踩</span>
           </div>

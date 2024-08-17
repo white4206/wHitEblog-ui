@@ -3,7 +3,7 @@
     <div style="display: flex;">
       <div class="title" @click="toDetails(resourceItem.id)">
         <el-icon style="margin-right: 5px" :size="22">
-          <svg-icon icon-name="videoB"/>
+          <SvgIcon icon-name="videoB"/>
         </el-icon>
         <span class="text-ellipsis-1">VueCli3.x小白入门-slot插槽的使用</span>
       </div>
@@ -14,7 +14,7 @@
           欢迎收看由“weixin_39811651”带来的视频：ixin_39811651”带来的视频：ixin_39811651”带来的视频：ixin_39811651”带来的视频：ixin_39811651”带来的视频：VueCli3.x小白入门-slot插槽的使用，喜欢请多多分享、点赞、收藏。
         </div>
         <div class="image-box">
-          <el-image src="/src/assets/images/common/watermark.png"/>
+          <img src="@/assets/images/common/placeholder.png"/>
           <div class="masking">
             <el-icon :size="28" color="var(--el-bg-color)">
               <VideoPlay/>
@@ -26,7 +26,7 @@
         <div class="info-box-left">
           <div class="num">
             <el-icon :size="20">
-              <svg-icon icon-name="videoA"/>
+              <SvgIcon icon-name="videoA"/>
             </el-icon>
             <span>1</span>
           </div>
@@ -84,7 +84,7 @@ const toDetails = (id) => {
     .image-box {
       position: relative;
 
-      .el-image {
+      img {
         margin-left: 25px;
         width: 135px;
         height: 75px;

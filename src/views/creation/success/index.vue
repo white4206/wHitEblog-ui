@@ -15,7 +15,7 @@
         <div>
           <div class="underReview">
             <el-icon :size="128">
-              <svg-icon icon-name="underReview"/>
+              <SvgIcon icon-name="underReview"/>
             </el-icon>
             <div class="underReview-text">发布成功! 正在审核中</div>
           </div>

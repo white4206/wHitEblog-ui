@@ -2,7 +2,7 @@
   <div class="main">
     <el-card class="account-head-card setting-card" shadow="never">
       <div class="account-head">
-        <div class="account-img"><el-image src="/src/assets/images/common/risk.png" alt=""/></div>
+        <div class="account-img"><img src="@/assets/images/common/risk.png" alt=""/></div>
         <div class="account-status">
           <el-tag type="danger" effect="dark" round>低风险</el-tag>
         </div>
@@ -100,7 +100,7 @@ const accountSettingItems = ref([
     background-size: cover;
     background-repeat: no-repeat;
 
-    .account-img .el-image {
+    .account-img img {
       margin-top: 20px;
       width: 100px;
     }

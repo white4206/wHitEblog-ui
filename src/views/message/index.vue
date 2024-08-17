@@ -65,7 +65,7 @@ import CommentBox from "@/views/message/components/CommentBox.vue";
 import FansBox from "@/views/message/components/FansBox.vue";
 import FavBox from "@/views/message/components/FavBox.vue";
 import NoticeBox from "@/views/message/components/NoticeBox.vue";
-import MessageBox from "@/views/message/components/_deprecated_MessageBox.vue";
+import MessageBox from "@/views/message/components/MessageBox.vue";
 
 const router = useRouter()
 const route = useRoute()

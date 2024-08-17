@@ -83,7 +83,7 @@
               去注册
             </el-button>
           </div>
-          <el-image src="/login.svg" class="image" alt=""/>
+          <img src="/login.svg" class="image" alt=""/>
         </div>
         <div class="panel right-panel">
           <div class="content">
@@ -95,7 +95,7 @@
               去登录
             </el-button>
           </div>
-          <el-image src="/register.svg" class="image" alt=""/>
+          <img src="/register.svg" class="image" alt=""/>
         </div>
       </div>
     </div>

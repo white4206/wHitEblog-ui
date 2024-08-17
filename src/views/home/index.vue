@@ -11,7 +11,7 @@
               <el-col :span="8">
                 <div class="right-box">
                   <div class="blog-headNotice" @click="toDetails(`/blog/details/${blogHeadNotice.id}`)">
-                    <el-image :src="blogHeadNotice.cover" :alt="blogHeadNotice.title"
+                    <img :src="blogHeadNotice.cover" :alt="blogHeadNotice.title"
                               class="blog-headNotice-img"/>
                     <div class="title-link text-ellipsis-2">
                       <h3>{{ blogHeadNotice.title }}</h3>
@@ -25,7 +25,7 @@
                     <div class="blog-tools-items">
                       <div class="tool-item" v-for="item in blogToolsItems" :key="item.id"
                            @click="goToPage(item.href)">
-                        <el-image :src="item.logoURL" :alt="item.title" class="tool-item-img"/>
+                        <img :src="item.logoURL" :alt="item.title" class="tool-item-img"/>
                         <div>{{ item.title }}</div>
                       </div>
                     </div>

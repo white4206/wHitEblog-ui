@@ -11,7 +11,7 @@
         </template>
         <div class="hot-download-box">
           <div class="hot-download-item" v-for="(item,index) in 1" :key="item.id">
-                        <span v-if="index<3" class="num"><el-image
+                        <span v-if="index<3" class="num"><img
                             :src="rankSrc(index)"
                             alt=""/></span>
 
@@ -89,7 +89,7 @@ onMounted(() => {
         color: var(--el-text-color-secondary);
         margin-right: 10px;
 
-        .el-image {
+        img {
           height: 20px;
           width: 20px;
         }

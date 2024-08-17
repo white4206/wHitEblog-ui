@@ -19,12 +19,12 @@
         <div class="content">
           <el-icon :size="16" style="position:absolute;left: 10px;top:3px"
                    color="var(--el-border-color-darker)">
-            <svg-icon icon-name="quoteLeft"/>
+            <SvgIcon icon-name="quoteLeft"/>
           </el-icon>
           <p>内容</p>
           <el-icon :size="16" style="position:absolute;right: 10px;bottom:3px"
                    color="var(--el-border-color-darker)">
-            <svg-icon icon-name="quoteRight"/>
+            <SvgIcon icon-name="quoteRight"/>
           </el-icon>
         </div>
       </div>

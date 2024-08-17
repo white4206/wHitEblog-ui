@@ -33,10 +33,10 @@
             </div>
             <div class="right-part">
               <el-icon color="var(--el-text-color-secondary)" :size="22">
-                <svg-icon icon-name="emoji"/>
+                <SvgIcon icon-name="emoji"/>
               </el-icon>
               <el-icon color="var(--el-text-color-secondary)" :size="22">
-                <svg-icon icon-name="code"/>
+                <SvgIcon icon-name="code"/>
               </el-icon>
               <el-button size="small" style="padding:0 15px" type="primary" round>评论</el-button>
             </div>
@@ -57,7 +57,7 @@
                 </el-icon>
                 <span><el-icon><ChatSquare/></el-icon>回复</span>
                 <el-icon>
-                  <svg-icon icon-name="like"/>
+                  <SvgIcon icon-name="like"/>
                 </el-icon>
               </div>
             </div>

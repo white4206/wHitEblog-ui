@@ -177,7 +177,7 @@ const onDragEnd = (added, removed, moved) => {
       text-decoration: underline;
       padding-left: 20px;
 
-      .el-image {
+      img {
         width: 15px;
         height: 20px;
         margin-top: 10px;

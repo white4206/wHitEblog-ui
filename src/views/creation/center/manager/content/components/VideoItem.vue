@@ -2,7 +2,7 @@
   <div class="video-box">
     <div class="video-item">
       <div v-if="contentArticle.cover" class="cover">
-        <el-image :src="contentArticle.cover" :alt="contentArticle.title"/>
+        <img :src="contentArticle.cover" :alt="contentArticle.title"/>
         <el-icon :size="32" style="position: absolute;left: 50%;top:50%;transform: translate(-50%,-50%)"
                  color="var(--el-bg-color)">
           <CaretRight/>
@@ -90,7 +90,7 @@ const props = defineProps({
       height: 125px;
       margin-right: 20px;
 
-      .el-image {
+      img {
         width: 225px;
         height: 125px;
       }

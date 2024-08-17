@@ -93,8 +93,11 @@
   <!--    <source src="./jojo.mp4" type="video/mp4" size="576"/>-->
   <!--    <source src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-1080p.mp4" type="video/mp4" size="1080">-->
   <!--  </video>-->
-  <svg-icon icon-name="demo" size="40px"/>
-  <icon-select style="width: 300px" @selected="selected"></icon-select>
+  <SvgIcon icon-name="demo" size="40px"/>
+  <IconSelect style="width: 300px" @selected="selected"></IconSelect>
+
+  <div class="box"></div>
+
 </template>
 
 
@@ -231,3 +234,15 @@ const onDragEnd = () => {
 const checkoutChange = (element, index) => {
 };
 </script>
+
+<style lang="scss">
+.box {
+  width: 200px;
+  height: 200px;
+  background-color: var(--el-color-success);
+}
+
+.box:hover {
+  border: 2px solid var(--el-color-primary);
+}
+</style>

@@ -15,7 +15,7 @@
           :key="index"
           @click="selectedIcon(item)"
       >
-        <svg-icon
+        <SvgIcon
             color="#999"
             :icon-name="item"
             style="margin-right: 5px"

@@ -13,7 +13,7 @@
                             class="search-input" clearable>
                     <template #prefix>
                       <el-icon :size="25">
-                        <svg-icon icon-name="searchLogo"/>
+                        <SvgIcon icon-name="searchLogo"/>
                       </el-icon>
                     </template>
                   </el-input>

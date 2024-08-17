@@ -9,20 +9,20 @@
         <div>
           <div>
             <div class="info-item">
-              <el-image src="/src/assets/images/common/modal_like.png" alt=""/>
+              <img src="@/assets/images/common/modal_like.png" alt=""/>
               <span>获得 <span class="num">{{ "13,337" }}</span> 次点赞</span>
             </div>
             <div class="info-item">
-              <el-image src="/src/assets/images/common/modal_comment.png" alt=""/>
+              <img src="@/assets/images/common/modal_comment.png" alt=""/>
               <span>内容获得 <span class="num">{{ "13,337" }}</span> 次评论</span>
             </div>
             <div class="info-item">
-              <el-image src="/src/assets/images/common/modal_favorite.png" alt=""/>
+              <img src="@/assets/images/common/modal_favorite.png" alt=""/>
               <span>获得 <span class="num">{{ "13,337" }}</span> 次收藏</span>
             </div>
           </div>
           <!--                  <div class="info-item">-->
-          <!--                    <el-image src="/src/assets/images/common/modal_code.png" alt="">-->
+          <!--                    <img src="@/assets/images/common/modal_code.png" alt="">-->
           <!--                    <span>代码片获得 <span class="num">{{ "13,337" }}</span> 次分享</span>-->
           <!--                  </div>-->
           <el-collapse-transition>
@@ -108,7 +108,7 @@ onMounted(() => {
     color: var(--el-text-color-regular);
     margin-bottom: 10px;
 
-    .el-image {
+    img {
       width: 22px;
       height: 22px;
       margin-right: 10px;
