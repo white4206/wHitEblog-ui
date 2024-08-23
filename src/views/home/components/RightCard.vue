@@ -61,7 +61,6 @@
 import Affix from "@/components/Affix/index.vue";
 import WebsiteInfoCard from "@/components/WebsiteInfoCard/index.vue";
 import {onMounted, ref} from "vue";
-import {getLeaveMessage} from "@/api/leaveMessage.js";
 import {getRelatedLink} from "@/api/common.js";
 import {getToDoList} from "@/api/todolist.js";
 import useUserStore from "@/store/modules/user.js";
@@ -70,7 +69,6 @@ const userStore = useUserStore()
 const rightCardRef = ref()
 const fixHeight = ref(0)
 const todolistItems = ref([])
-const messageItems = ref([])
 const relatedLinkItems = ref([]);
 const noData = ref(true)
 
@@ -81,14 +79,6 @@ const jumpLink = (link) => {
     location.reload()
 }
 onMounted(() => {
-  getLeaveMessage().then(res => {
-    messageItems.value = res.data.map(item => {
-      return {
-        ...item,
-        avatar: item.avatar ? import.meta.env.VITE_APP_BASE_API + item.avatar : null
-      }
-    })
-  })
   getRelatedLink().then(res => {
     relatedLinkItems.value = res.data.map(item => {
       return {

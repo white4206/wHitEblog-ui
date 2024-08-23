@@ -742,7 +742,7 @@ const uploadChange = (rawFile, rawFileList) => {
     }
 
     .header {
-      padding:20px 30px;
+      padding: 20px 30px;
       display: flex;
       align-items: center;
       font-size: 16px;
@@ -794,7 +794,7 @@ const uploadChange = (rawFile, rawFileList) => {
     }
 
     .header {
-      padding:20px;
+      padding: 20px;
       display: flex;
       align-items: center;
       font-size: 16px;

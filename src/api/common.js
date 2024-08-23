@@ -70,3 +70,9 @@ export const getPlatformAnnouncement = () => {
         method: "get",
     })
 }
+export const getIPAddress = () => {
+    return request({
+        url: "/getIPAddress",
+        method: "post",
+    })
+}

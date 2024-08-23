@@ -1,8 +1,8 @@
 <template>
   <div v-loading.fullscreen.lock="globalStore.pageLoading">
     <!--      <el-header class="menu" v-if="route.fullPath!=='/login'">-->
-    <Affix :offset="0" :z-index="999">
-      <el-header :style="{position: route.path==='/video'?'absolute':''}" class="header">
+    <Affix v-if="route.path !=='/' && !route.meta.hidden" :offset="0" :z-index="999">
+      <el-header :style="{position: route.meta.navbar==='video'?'absolute':''}" class="header">
         <Navbar></Navbar>
       </el-header>
     </Affix>

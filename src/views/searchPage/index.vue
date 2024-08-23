@@ -171,15 +171,15 @@
 <script setup>
 import {onMounted, ref} from "vue";
 import {Search} from "@element-plus/icons-vue";
-import ArticleItem from "@/views/SearchPage/components/ArticleItem.vue";
+import ArticleItem from "@/views/searchPage/components/ArticleItem.vue";
 import {useRoute, useRouter} from "vue-router";
 import {searchArticle} from "@/api/blog.js";
 import WebsiteInfoCard from "@/components/WebsiteInfoCard/index.vue";
 import Affix from "@/components/Affix/index.vue";
-import ResourceItem from "@/views/SearchPage/components/ResourceItem.vue";
-import UserItem from "@/views/SearchPage/components/UserItem.vue";
-import VideoItem from "@/views/SearchPage/components/VideoItem.vue";
-import SearchItem from "@/views/SearchPage/components/SearchItem.vue";
+import ResourceItem from "@/views/searchPage/components/ResourceItem.vue";
+import UserItem from "@/views/searchPage/components/UserItem.vue";
+import VideoItem from "@/views/searchPage/components/VideoItem.vue";
+import SearchItem from "@/views/searchPage/components/SearchItem.vue";
 
 const isScroll = ref(false)
 const total = ref(0)

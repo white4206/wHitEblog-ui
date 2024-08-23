@@ -1,11 +1,10 @@
 <template>
   <!-- <el-affix :offset="0" :z-index="999">-->
   <el-menu
-      v-if="activeIndex!=='/creation'"
-      :default-active="activeIndex" mode="horizontal"
-      router :ellipsis="false"
-      :class="{menu:isVideoPageScroll || route.path !== '/video',
-      videoPageMenu:!isVideoPageScroll && route.path === '/video'}"
+      v-if="!route.meta.navbar||route.meta.navbar==='video'" :default-active="activeIndex"
+      mode="horizontal" router :ellipsis="false"
+      :class="{menu:isVideoPageScroll || route.meta.navbar !== 'video',
+      videoPageMenu:!isVideoPageScroll && route.meta.navbar === 'video'}"
   >
     <Logo></Logo>
     <el-menu-item index="/home">首页</el-menu-item>
@@ -51,9 +50,7 @@
     <EditButton/>
   </el-menu>
   <el-menu
-      v-if="activeIndex==='/creation'&&route.path!=='/creation/editor'
-      &&route.path!=='/creation/upload/single'&&route.path!=='/creation/upload/batch'
-      &&route.path!=='/creation/post'"
+      v-if="route.meta.navbar === 'creation'"
       :default-active="activeIndex" mode="horizontal"
       router :ellipsis="false" class="menu"
   >
@@ -75,10 +72,8 @@
     <SwitchTheme/>
   </el-menu>
   <el-menu
-      v-if="route.path==='/creation/editor'||route.path==='/creation/upload/single'
-      ||route.path==='/creation/upload/batch'||route.path==='/creation/post'"
-      :default-active="activeIndex" mode="horizontal"
-      router :ellipsis="false" class="menu"
+      v-if="route.meta.navbar==='editor'||route.meta.navbar==='upload'||route.meta.navbar==='post'"
+      :default-active="activeIndex" mode="horizontal" router :ellipsis="false" class="menu"
   >
     <Logo></Logo>
     <el-popover
@@ -93,16 +88,9 @@
           <el-icon @click="router.push('/creation')" style="margin-right: 5px">
             <ArrowLeft/>
           </el-icon>
-          <span
-              v-if="route.path==='/creation/editor'"
-          ><b>发布文章</b></span>
-          <span
-              v-if="route.path==='/creation/upload/single'
-              ||route.path==='/creation/upload/batch'"
-          ><b>上传资源</b></span>
-          <span
-              v-if="route.path==='/creation/post'"
-          ><b>创作视频</b></span>
+          <span v-if="route.meta.navbar==='editor'"><b>发布文章</b></span>
+          <span v-if="route.meta.navbar==='upload'"><b>上传资源</b></span>
+          <span v-if="route.meta.navbar==='post'"><b>创作视频</b></span>
           <el-icon v-if="isExpand" style="margin-left: 5px" size="14">
             <CaretBottom/>
           </el-icon>
@@ -294,11 +282,6 @@ onMounted(() => {
 
 :deep(.el-switch__core .el-switch__action) {
   background-color: var(--el-bg-color);
-}
-
-.unLogin-desc {
-  margin: 10px 0 20px 0;
-  text-align: center;
 }
 
 .creation-menu {

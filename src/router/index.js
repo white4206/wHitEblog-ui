@@ -1,4 +1,4 @@
-import {createRouter, createWebHashHistory} from "vue-router";
+import {createRouter, createWebHistory} from "vue-router";
 import NotFound from "@/components/NotFound/index.vue";
 import useUserStore from "@/store/modules/user.js";
 import {ElMessage} from "element-plus";
@@ -6,21 +6,21 @@ import {getToken} from "@/utils/auth.js";
 // import useGlobalStore from "@/store/modules/global.js";
 import NProgress from "@/nprogress/index.js";
 
-const title = document.title
+const title = "Blog | wHitE 博客"
 const routes = [
     {
         path: "/login",
-        meta: {title: "登录"},
+        meta: {title: "登录", authorization: false},
         component: () => import("@/views/login/index.vue"),
     },
     {
         path: "/home",
-        meta: {title: "首页"},
+        meta: {title: "首页", authorization: false},
         component: () => import("@/views/home/index.vue"),
     },
     {
         path: "/blog",
-        meta: {title: "博客"},
+        meta: {title: "博客", authorization: false},
         component: () => import("@/views/blog/index.vue"),
         children: [
             {
@@ -37,7 +37,7 @@ const routes = [
     },
     {
         path: "/resource",
-        meta: {title: "下载资源"},
+        meta: {title: "下载资源", authorization: false},
         component: () => import("@/views/resource/index.vue"),
         children: [
             {
@@ -59,12 +59,12 @@ const routes = [
     },
     {
         path: "/video",
-        meta: {title: "视频列表"},
+        meta: {title: "视频列表", navbar: "video", authorization: false},
         component: () => import("@/views/video/index.vue"),
         children: [
             {
                 path: "",
-                meta: {title: "视频列表"},
+                meta: {title: "视频列表", navbar: "video"},
                 component: () => import("@/views/video/videoList/index.vue"),
             },
             {
@@ -76,22 +76,22 @@ const routes = [
     },
     {
         path: "/searchPage",
-        meta: {title: "搜索页"},
-        component: () => import("@/views/SearchPage/index.vue")
+        meta: {title: "搜索页", authorization: false},
+        component: () => import("@/views/searchPage/index.vue")
     },
     {
         path: "/message",
-        meta: {title: "消息中心"},
+        meta: {title: "消息中心", authorization: true},
         component: () => import("@/views/message/index.vue")
     },
     {
         path: "/creation",
-        meta: {title: "创作中心"},
+        meta: {title: "创作中心", navbar: "creation", authorization: true},
         component: () => import("@/views/creation/index.vue"),
         children: [
             {
                 path: "editor",
-                meta: {title: "写文章"},
+                meta: {title: "写文章", navbar: "editor"},
                 component: () => import("@/views/creation/editor/index.vue")
             },
             {
@@ -101,7 +101,7 @@ const routes = [
             },
             {
                 path: "upload",
-                meta: {title: "上传资源"},
+                meta: {title: "上传资源", navbar: "upload"},
                 component: () => import("@/views/creation/upload/index.vue"),
                 children: [
                     {
@@ -122,7 +122,7 @@ const routes = [
             },
             {
                 path: "post",
-                meta: {title: "创作视频"},
+                meta: {title: "创作视频", navbar: "post"},
                 component: () => import("@/views/creation/post/index.vue"),
             },
             {
@@ -157,7 +157,7 @@ const routes = [
     },
     {
         path: "/user",
-        meta: {title: "个人中心"},
+        meta: {title: "个人中心", authorization: true},
         component: () => import("@/views/user/index.vue"),
         children: [
             {
@@ -208,7 +208,7 @@ const routes = [
     },
     {
         path: "/personal",
-        meta: {title: "个人主页"},
+        meta: {title: "个人主页", authorization: true},
         component: () => import("@/views/personal/index.vue"),
     },
     {
@@ -217,16 +217,22 @@ const routes = [
         component: () => import("@/views/demo/index.vue")
     },
     {
+        path: "/ipAddress",
+        meta: {title: "IP查询", hidden: true, fullTitle: true},
+        component: () => import("@/views/ipAddress/index.vue"),
+    },
+    {
         path: "/",
         redirect: "/home",
     },
     {
         path: "/:pathMatch(.*)*",
+        meta: {title: "404"},
         component: NotFound,
     },
 ];
 const router = createRouter({
-    history: createWebHashHistory(),
+    history: createWebHistory(),
     routes,
 });
 router.beforeEach(async (to, from, next) => {
@@ -234,14 +240,14 @@ router.beforeEach(async (to, from, next) => {
     // 页面加载时显示全屏加载蒙版
     // const globalStore = useGlobalStore();
     // globalStore.pageLoading = true
+
     userStore.isLogin = getToken() !== undefined;
     if (userStore.isLogin && to.path === "/login") {
         ElMessage.info("您已登录,请先退出登陆后再尝试")
         next({
             path: from.path
         })
-    } else if (!userStore.isLogin && (to.path.split("/")[1] === "message" || to.path.split("/")[1] === "creation"
-        || to.path.split("/")[1] === "user")) {
+    } else if (!userStore.isLogin && to.meta.authorization) {
         ElMessage.warning("登录以查看更多内容")
         next("/login")
     } else {
@@ -253,12 +259,15 @@ router.beforeEach(async (to, from, next) => {
     }
 });
 router.afterEach((to, from, next) => {
-    // 页面加载时关闭全屏加载蒙版
-    // const globalStore = useGlobalStore();
-    // globalStore.pageLoading = false
+    // 若在搜索页搜索 则给标题添加 搜索
     if (to.path === '/searchPage' && to.query.q)
         to.meta.title = to.query.q + " 搜索"
-    if (to.meta.title)
+
+    // 先判断是否需要单独显示自己的标题
+    if (to.meta.fullTitle)
+        document.title = to.meta.title
+    // 再判断是否有自定义的标题
+    else if (to.meta.title)
         document.title = to.meta.title + " - " + title
     else
         document.title = title
