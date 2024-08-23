@@ -71,6 +71,7 @@ onMounted(() => {
     text-align: center;
 
     .info {
+      color: var(--el-text-color-primary);
       line-height: 2;
     }
   }
