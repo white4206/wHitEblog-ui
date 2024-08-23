@@ -15,13 +15,13 @@ export default defineConfig(({mode, command}) => {
             proxy: {
                 "/dev-api": {
                     // target: "http://localhost:10010",
-                    target: "http://47.120.12.136:10010",
+                    target: "http://blog.whitecc.top:10010",
                     changeOrigin: true,
                     rewrite: (path) => path.replace(/^\/dev-api/, ""), // 不可以省略rewrite
                 },
                 "/admin-dev-api": {
                     // target: "http://localhost:10020",
-                    target: "http://47.120.12.136:10020",
+                    target: "http://blog.whitecc.top:10020",
                     changeOrigin: true,
                     rewrite: (path) => path.replace(/^\/admin-dev-api/, ""), // 不可以省略rewrite
                 },
