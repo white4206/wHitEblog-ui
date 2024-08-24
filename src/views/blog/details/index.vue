@@ -97,7 +97,7 @@
             <!-- 底部栏 -->
             <FooterCard :articleDetail="data.articleDetail" :authorInfo="data.authorInfo"/>
             <!-- 评论 -->
-            <CommentCard/>
+            <CommentCard :articleId="Number(route.params.Bid)"/>
             <!-- 网站信息条 -->
             <WebsiteInfoBar type="card" style="margin-top: 10px"/>
           </el-col>
@@ -142,54 +142,53 @@ const contentRef = ref()
 
 onMounted(() => {
   getArticleDetail(route.params.Bid).then(res => {
-        data.value = res.data
-        data.value.authorInfo.avatar = data.value.authorInfo.avatar ? import.meta.env.VITE_APP_BASE_API
-            + data.value.authorInfo.avatar : null
-        contentRef.value.innerHTML = res.data.articleDetail.content
+    data.value = res.data
+    data.value.authorInfo.avatar = data.value.authorInfo.avatar ? import.meta.env.VITE_APP_BASE_API
+        + data.value.authorInfo.avatar : null
+    contentRef.value.innerHTML = res.data.articleDetail.content
 
-        // 动态设置标题
-        document.title = data.value.articleDetail.title + ' - ' + document.title
+    // 动态设置标题
+    document.title = data.value.articleDetail.title + ' - ' + document.title
 
-        // 动态创建图片预览元素
-        document.querySelectorAll("figure.image img").forEach((img, index) => {
-          srcList.value.push(img.src)
-          img.style.cursor = "zoom-in"
-          img.onclick = () => {
-            showViewer.value = true
-            viewerIndex.value = index
-          }
-        })
-
-        // 代码美化
-        const presEl = document.querySelectorAll('pre')
-        for (let index = 0; index < presEl.length; index++) {
-          const element = presEl[index];
-          element.setAttribute("lang", 'zh-Hans-CN')
-          element.setAttribute("data-prismjs-copy", '复制')
-          element.setAttribute("data-prismjs-copy-error", '复制失败')
-          element.setAttribute("data-prismjs-copy-success", '已复制')
-          element.setAttribute("class", 'line-numbers')
-        }
-        Prism.highlightAll()
-
-        // 获取并创建目录
-        // 要获取的标题元素
-        const titleElements = ['H1', 'H2', 'H3', 'H4', 'H5', 'H6']
-        // 元素深度遍历查询目标元素
-        deepTraverse(titleElements, contentRef.value, (element, index) => {
-          const id = 'header-' + index
-          element.setAttribute('id', id)
-          catalogue.value.push({
-            id: id,
-            title: element.innerText,
-            level: Number(element.nodeName.substring(1, 2)) - 2,
-            nodeName: element.nodeName,
-            e: element,
-            read: false
-          })
-        })
+    // 动态创建图片预览元素
+    document.querySelectorAll("figure.image img").forEach((img, index) => {
+      srcList.value.push(img.src)
+      img.style.cursor = "zoom-in"
+      img.onclick = () => {
+        showViewer.value = true
+        viewerIndex.value = index
       }
-  )
+    })
+
+    // 代码美化
+    const presEl = document.querySelectorAll('pre')
+    for (let index = 0; index < presEl.length; index++) {
+      const element = presEl[index];
+      element.setAttribute("lang", 'zh-Hans-CN')
+      element.setAttribute("data-prismjs-copy", '复制')
+      element.setAttribute("data-prismjs-copy-error", '复制失败')
+      element.setAttribute("data-prismjs-copy-success", '已复制')
+      element.setAttribute("class", 'line-numbers')
+    }
+    Prism.highlightAll()
+
+    // 获取并创建目录
+    // 要获取的标题元素
+    const titleElements = ['H1', 'H2', 'H3', 'H4', 'H5', 'H6']
+    // 元素深度遍历查询目标元素
+    deepTraverse(titleElements, contentRef.value, (element, index) => {
+      const id = 'header-' + index
+      element.setAttribute('id', id)
+      catalogue.value.push({
+        id: id,
+        title: element.innerText,
+        level: Number(element.nodeName.substring(1, 2)) - 2,
+        nodeName: element.nodeName,
+        e: element,
+        read: false
+      })
+    })
+  })
 })
 </script>
 

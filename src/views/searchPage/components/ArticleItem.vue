@@ -1,7 +1,7 @@
 <template>
   <div class="search-item-box">
     <div style="display: flex;">
-      <div class="title text-ellipsis-1" @click="toDetails(blogItem.id)">{{ blogItem.title }}</div>
+      <div class="title text-ellipsis-1" @click="toDetails(`/blog/details/${blogItem.id}`)">{{ blogItem.title }}</div>
     </div>
     <div style="display: flex;align-items: center;">
       <div class="text-box">
@@ -48,6 +48,7 @@
 <script setup>
 import {ref} from 'vue'
 import {ChatLineSquare} from "@element-plus/icons-vue";
+import toDetails from "@/utils/toDetails.js";
 
 const props = defineProps({
   blogItem: {
@@ -55,10 +56,6 @@ const props = defineProps({
   }
 })
 const viewerIndex = ref(0)
-
-const toDetails = (id) => {
-  window.open(location.href.split("#")[0] + `#/blog/details/${id}`)
-}
 </script>
 
 <style scoped lang="scss">

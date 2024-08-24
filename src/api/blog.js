@@ -88,3 +88,10 @@ export const getContentArticle = (params) => {
         params: params
     })
 }
+export const getArticleComment = (params) => {
+    return request({
+        url: "/blog/getArticleComment",
+        method: "get",
+        params: params
+    })
+}

@@ -3,7 +3,7 @@
     <div class="article-item">
       <div v-if="contentArticle.cover" class="cover">
         <img :src="contentArticle.cover"
-                  :alt="contentArticle.title"/>
+             :alt="contentArticle.title"/>
       </div>
       <div style="display: flex;flex-direction: column;flex:1">
         <el-row class="article-box-row">
@@ -38,7 +38,7 @@
                        @click="router.push({path:'/creation/editor',query:{articleId:contentArticle.id}})">
               编辑
             </el-button>
-            <el-button link @click="toDetails(contentArticle.id)">浏览</el-button>
+            <el-button link @click="toDetails(`/blog/details/${contentArticle.id}`)">浏览</el-button>
             <div class="operation-more">
               <el-popover :hide-after="0" popper-style="padding: 10px 0 10px 0;min-width: auto;"
                           placement="bottom-start"
@@ -66,6 +66,7 @@
 
 <script setup>
 import {useRouter} from "vue-router";
+import toDetails from "@/utils/toDetails.js";
 
 const router = useRouter()
 const props = defineProps({
@@ -73,10 +74,6 @@ const props = defineProps({
     type: Object
   }
 })
-
-const toDetails = (id) => {
-  window.open(location.href.split("#")[0] + `#/blog/details/${id}`)
-}
 </script>
 
 <style scoped lang="scss">

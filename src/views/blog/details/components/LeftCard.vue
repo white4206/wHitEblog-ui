@@ -64,7 +64,7 @@
           <div class="hot-article">
             <ul>
               <li class="hot-article-item" v-for="hotArticle in hotArticleList"
-                  @click="toDetails(hotArticle.id)">
+                  @click="toDetails(`/blog/details/${hotArticle.id}`)">
                 <p>
                   {{ hotArticle.title }}
                   <el-icon color="var(--el-text-color-secondary)" style="vertical-align: -2px" :size="14">
@@ -100,6 +100,7 @@ import {ElMessage} from "element-plus";
 import Affix from "@/components/Affix/index.vue";
 import {useRouter} from "vue-router";
 import {onMounted, ref} from "vue";
+import toDetails from "@/utils/toDetails.js";
 
 const emits = defineEmits(["update:catalogue"])
 const props = defineProps({
@@ -135,9 +136,6 @@ const searchArticle = () => {
 const scrollToId = (id) => {
   let el = document.getElementById(id)
   window.scrollTo({top: el.offsetTop, behavior: 'smooth'})
-}
-const toDetails = (id) => {
-  window.open(location.href.split("#")[0] + `#/blog/details/${id}`)
 }
 onMounted(() => {
   window.addEventListener("scroll", () => {

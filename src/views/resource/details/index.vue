@@ -253,8 +253,8 @@ const activeTab = ref('detail')
 
 const pageChange = () => {
   // document.documentElement.scrollTop = 0
-  // queryParam.value.pageNum = currentPage.value
-  // queryParam.value.pageCount = currentSize.value
+  // queryParams.value.pageNum = currentPage.value
+  // queryParams.value.pageCount = currentSize.value
   // loading.value = true
   // getData()
 }

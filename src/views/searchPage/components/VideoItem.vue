@@ -1,7 +1,7 @@
 <template>
   <div class="search-item-box">
     <div style="display: flex;">
-      <div class="title" @click="toDetails(resourceItem.id)">
+      <div class="title" @click="toDetails(`/blog/details/${resourceItem.id}`)">
         <el-icon style="margin-right: 5px" :size="22">
           <SvgIcon icon-name="videoB"/>
         </el-icon>
@@ -41,15 +41,13 @@
 </template>
 
 <script setup>
+import toDetails from "@/utils/toDetails.js";
+
 const props = defineProps({
   resourceItem: {
     type: Object,
   }
 })
-
-const toDetails = (id) => {
-  window.open(location.href.split("#")[0] + `#/blog/details/${id}`)
-}
 </script>
 
 <style scoped lang="scss">
@@ -115,7 +113,7 @@ const toDetails = (id) => {
         height: 75px;
 
         .el-icon {
-          color:var(--el-bg-color);
+          color: var(--el-bg-color);
           transform: scale(1);
           transition: .4s;
         }

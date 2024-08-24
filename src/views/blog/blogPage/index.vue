@@ -4,7 +4,7 @@
       <el-row justify="center">
         <el-col :span="20" :xs="17" :sm="18" :md="19" :lg="20" :xl="21">
           <!-- 标签条 -->
-          <TagBar v-model:tagId="queryParam.tagId" v-model:childTagId="queryParam.childTagId" @getData="getData"
+          <TagBar v-model:tagId="queryParams.tagId" v-model:childTagId="queryParams.childTagId" @getData="getData"
                   @reset="reset"/>
         </el-col>
       </el-row>
@@ -16,7 +16,7 @@
               <div class="blog-box" v-infinite-scroll="load" :infinite-scroll-disabled="infinite"
                    :infinite-scroll-immediate="false" :infinite-scroll-delay="1000">
                 <BlogItem v-for="item in blogItems" :key="item.id" :blogItem="item"
-                          @click="toDetails(item.id)">
+                          @click="toDetails(`/blog/details/${item.id}`)">
                 </BlogItem>
                 <el-empty v-if="noMore && !blogItems.length" :description="noData?'到底了(⊙_⊙;)...':'暂无数据'"
                           v-loading="isLoading"/>
@@ -43,8 +43,9 @@ import {onMounted, ref} from 'vue'
 import {getArticle} from "@/api/blog.js";
 import TagBar from "@/views/blog/blogPage/components/TagBar.vue";
 import RightCard from "@/views/blog/blogPage/components/RightCard.vue";
+import toDetails from "@/utils/toDetails.js";
 
-const queryParam = ref({
+const queryParams = ref({
   pageNum: 0,
   pageCount: 10,
   tagId: null,
@@ -61,7 +62,7 @@ const getData = () => {
   noData.value = false
   isLoading.value = true
   noMore.value = true
-  getArticle(queryParam.value).then(res => {
+  getArticle(queryParams.value).then(res => {
     // 若查询到数据则无数据设置为假
     if (res.data.length > 0) noData.value = false
     // 映射拿回的数据并将其返回的数据解构推入存储
@@ -88,17 +89,14 @@ const getData = () => {
 }
 // 重置参数
 const reset = () => {
-  queryParam.value.pageNum = 1
-  queryParam.value.pageCount = 10
+  queryParams.value.pageNum = 1
+  queryParams.value.pageCount = 10
   blogItems.value = []
   infinite.value = false
 }
 const load = () => {
-  queryParam.value.pageNum += 1
+  queryParams.value.pageNum += 1
   getData()
-}
-const toDetails = (id) => {
-  window.open(location.href.split("#")[0] + `#/blog/details/${id}`)
 }
 onMounted(() => {
   load()

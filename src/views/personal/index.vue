@@ -39,20 +39,21 @@
                 </template>
                 <div class="queryForm">
                   <div class="query-item query-item-status" v-if="isSelf">
-                    <el-select style="width: 125px" v-model="queryParam.status" @change="queryChange">
+                    <el-select style="width: 125px" v-model="queryParams.status" @change="queryChange">
                       <el-option label="全部可见" :value="1"/>
                       <el-option label="仅我可见" :value="0"/>
                       <el-option label="审核中&失败" :value="-1"/>
                     </el-select>
                   </div>
-                  <div class="query-item" :style="{color:queryParam.sortBy==='createTime'?'var(--el-color-primary)':''}"
+                  <div class="query-item"
+                       :style="{color:queryParams.sortBy==='createTime'?'var(--el-color-primary)':''}"
                        @click="sortByCreateTime">
                     按最后发布时间
                     <el-icon :size="14">
                       <Sort/>
                     </el-icon>
                   </div>
-                  <div class="query-item" :style="{color:queryParam.sortBy==='viewNum'?'var(--el-color-primary)':''}"
+                  <div class="query-item" :style="{color:queryParams.sortBy==='viewNum'?'var(--el-color-primary)':''}"
                        @click="sortByViewNum">
                     按访问量
                     <el-icon :size="14">
@@ -60,7 +61,7 @@
                     </el-icon>
                   </div>
                   <div class="query-item query-item-time">
-                    <el-select style="width: 100px" v-model="queryParam.time">
+                    <el-select style="width: 100px" v-model="queryParams.time">
                       <el-option label="创作历程" value="all">
                         <div style="display: flex;justify-content: space-between;width: 130px">
                           <span>全部</span>
@@ -94,7 +95,8 @@
                   </div>
                   <div v-infinite-scroll="load" :infinite-scroll-disabled="infinite"
                        :infinite-scroll-immediate="false" :infinite-scroll-delay="1000">
-                    <div v-for="article in articleData" class="article-item" @click="toDetails(article.id)">
+                    <div v-for="article in articleData" class="article-item"
+                         @click="toDetails(`/blog/details/${article.id}`)">
                       <div style="display: flex">
                         <div v-if="article.cover" class="cover">
                           <img :src="article.cover" alt=""/>
@@ -306,6 +308,7 @@ import useUserStore from "@/store/modules/user.js";
 import PersonalCard from "@/views/personal/components/PersonalCard.vue";
 import LeftCard from "@/views/personal/components/LeftCard.vue";
 import SearchBox from "@/views/personal/components/SearchBox.vue";
+import toDetails from "@/utils/toDetails.js";
 
 const infinite = ref(false)
 const noMore = ref(true)
@@ -324,7 +327,7 @@ const postCommentData = ref([])
 const receiveCommentData = ref([])
 const favoriteData = ref([])
 const showFavorite = ref(false)
-const queryParam = ref({
+const queryParams = ref({
   pageNum: 0,
   pageCount: 10,
   status: 1,
@@ -340,18 +343,15 @@ const userData = ref({
 })
 const showTabItem = ref("flex")
 
-const toDetails = (id) => {
-  window.open(location.href.split("#")[0] + `#/blog/details/${id}`)
-}
 const reset = () => {
   articleData.value = []
-  queryParam.value.pageNum = 0
+  queryParams.value.pageNum = 0
   infinite.value = false
 }
 const load = () => {
   noMore.value = true
   isLoading.value = true
-  queryParam.value.pageNum += 1
+  queryParams.value.pageNum += 1
   getArticleData()
 }
 const queryChange = () => {
@@ -359,7 +359,7 @@ const queryChange = () => {
   load()
 }
 const getArticleData = () => {
-  getUserArticle({authorId: authorId.value, ...queryParam.value}).then(res => {
+  getUserArticle({authorId: authorId.value, ...queryParams.value}).then(res => {
     articleData.value.push(...(res.data.map(item => {
       return {
         ...item,
@@ -367,7 +367,7 @@ const getArticleData = () => {
       }
     })))
     articleTotal.value = res.info.total
-    if (queryParam.value.status === 1)
+    if (queryParams.value.status === 1)
       originalTotal.value = res.info.total
     noMore.value = false
     isLoading.value = false
@@ -388,12 +388,12 @@ const innerTabClick = (tab) => {
   router.push({query: {author: authorId.value, tab: activeTab.value, attentionActiveTab: tab.paneName}})
 }
 const sortByCreateTime = () => {
-  queryParam.value.sortBy = "createTime"
+  queryParams.value.sortBy = "createTime"
   reset()
   getArticleData()
 }
 const sortByViewNum = () => {
-  queryParam.value.sortBy = "viewNum"
+  queryParams.value.sortBy = "viewNum"
   reset()
   getArticleData()
 }

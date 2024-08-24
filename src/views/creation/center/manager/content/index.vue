@@ -9,27 +9,27 @@
           <el-tab-pane label="状态" disabled/>
           <el-tab-pane v-for="tab in articleStatusList" :key="tab.id" :label="tab.label" :name="tab.name">
             <template #label>{{ tab.label + '(' + contentArticles.length + ')' }}</template>
-            <el-form :model="queryParam" :inline="true">
+            <el-form :model="queryParams" :inline="true">
               <el-form-item style="margin-bottom: 10px">
-                <el-select style="width: 80px;margin-right: 10px" v-model="queryParam.year" placeholder="年"
+                <el-select style="width: 80px;margin-right: 10px" v-model="queryParams.year" placeholder="年"
                            @change="yearOptionChange">
                   <el-option v-for="option in yearOptions" :key="option.key" :label="option.label"
                              :value="option.value"/>
                 </el-select>
-                <el-select style="width: 80px;" v-model="queryParam.month" placeholder="月" @change="monthOptionChange"
+                <el-select style="width: 80px;" v-model="queryParams.month" placeholder="月" @change="monthOptionChange"
                            @focus="monthOptionFocus">
                   <el-option v-for="option in monthOptions" :key="option.key" :label="option.label"
                              :value="option.value"/>
                 </el-select>
               </el-form-item>
               <el-form-item style="margin-bottom: 10px">
-                <el-select style="width: 120px;" v-model="queryParam.category" placeholder="文章类型">
+                <el-select style="width: 120px;" v-model="queryParams.category" placeholder="文章类型">
                   <el-option v-for="option in categoryOptions" :key="option.key" :label="option.label"
                              :value="option.value"/>
                 </el-select>
               </el-form-item>
               <el-form-item style="margin-bottom: 10px">
-                <el-input v-model="queryParam.keyword" placeholder="请输入关键词"></el-input>
+                <el-input v-model="queryParams.keyword" placeholder="请输入关键词"></el-input>
               </el-form-item>
               <el-form-item style="margin-bottom: 10px">
                 <el-button class="transparent-btn" style="background:transparent;padding: 0 25px" type="primary" plain
@@ -65,14 +65,14 @@
                  @tab-change="resourceInnerTabChange"
                  @tab-click="resourceInnerTabClick">
           <el-tab-pane label="上传明细" name="upload">
-            <el-form class="resource-queryForm" :model="queryParam" :inline="true">
+            <el-form class="resource-queryForm" :model="queryParams" :inline="true">
               <el-form-item>
-                <el-select style="width: 80px;margin-right: 10px" v-model="queryParam.year" placeholder="年"
+                <el-select style="width: 80px;margin-right: 10px" v-model="queryParams.year" placeholder="年"
                            @change="yearOptionChange">
                   <el-option v-for="option in yearOptions" :key="option.key" :label="option.label"
                              :value="option.value"/>
                 </el-select>
-                <el-select style="width: 80px;margin-right: 40px" v-model="queryParam.month" placeholder="月"
+                <el-select style="width: 80px;margin-right: 40px" v-model="queryParams.month" placeholder="月"
                            @change="monthOptionChange"
                            @focus="monthOptionFocus">
                   <el-option v-for="option in monthOptions" :key="option.key" :label="option.label"
@@ -80,7 +80,7 @@
                 </el-select>
               </el-form-item>
               <el-form-item style="margin-right: 10px">
-                <el-input style="width:440px" v-model="queryParam.keyword" placeholder="请输入关键词"></el-input>
+                <el-input style="width:440px" v-model="queryParams.keyword" placeholder="请输入关键词"></el-input>
               </el-form-item>
               <el-form-item>
                 <el-button class="transparent-btn" style="background:transparent;padding: 0 25px" type="primary" plain
@@ -206,7 +206,7 @@ const videoStatusList = ref([
   {id: 3, label: "审核", name: "underReview"},
   {id: 4, label: "未通过", name: "fault"},
 ])
-const queryParam = ref({
+const queryParams = ref({
   status: "total",
   year: null,
   month: null,
@@ -227,20 +227,20 @@ const categoryOptions = ref([
 const load = () => {
   noMore.value = true
   isLoading.value = true
-  queryParam.value.pageNum += 1
+  queryParams.value.pageNum += 1
   getData()
 }
 const yearOptionChange = () => {
   reset()
-  if (!queryParam.value.year) {
-    queryParam.value.month = 0
+  if (!queryParams.value.year) {
+    queryParams.value.month = 0
   }
 }
 const monthOptionChange = () => {
   reset()
 }
 const monthOptionFocus = () => {
-  if (queryParam.value.year) {
+  if (queryParams.value.year) {
     monthOptions.value = [
       {key: 0, value: 0, label: "不限"},
       {key: 1, value: 1, label: "1月"},
@@ -261,12 +261,12 @@ const monthOptionFocus = () => {
   }
 }
 const reset = () => {
-  queryParam.value.pageNum = 1
-  queryParam.value.pageCount = 5
+  queryParams.value.pageNum = 1
+  queryParams.value.pageCount = 5
   infinite.value = false
 }
 const getData = () => {
-  getContentArticle(queryParam.value).then(res => {
+  getContentArticle(queryParams.value).then(res => {
     contentArticles.value.push(...res.data.map(item => {
       return {
         ...item,
@@ -299,7 +299,7 @@ const innerTabClick = (tab) => {
 const innerTabChange = () => {
   reset()
   contentArticles.value = []
-  queryParam.value.status = activeArticleStatus.value
+  queryParams.value.status = activeArticleStatus.value
   isLoading.value = true
   getData()
 }
@@ -309,7 +309,7 @@ const resourceInnerTabClick = (tab) => {
 const resourceInnerTabChange = () => {
   reset()
   contentArticles.value = []
-  queryParam.value.status = activeArticleStatus.value
+  queryParams.value.status = activeArticleStatus.value
   isLoading.value = true
   getData()
 }

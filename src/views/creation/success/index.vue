@@ -20,7 +20,7 @@
             <div class="underReview-text">发布成功! 正在审核中</div>
           </div>
           <div class="operation">
-            <el-button round @click="toDetails(route.params.Sid)">查看文章</el-button>
+            <el-button round @click="toDetails(`/blog/details/${route.params.Sid}`)">查看文章</el-button>
             <el-button round @click="router.push({path:'/creation/editor',query:{articleId:route.params.Sid}})">
               重新编辑
             </el-button>
@@ -37,13 +37,11 @@
 import {useRoute, useRouter} from 'vue-router'
 import Share from "@/views/creation/success/components/Share.vue";
 import {onMounted} from "vue";
+import toDetails from "@/utils/toDetails.js";
 
 const route = useRoute()
 const router = useRouter()
 
-const toDetails = (id) => {
-  window.open(location.href.split("#")[0] + `#/blog/details/${id}`)
-}
 onMounted(() => {
 })
 </script>

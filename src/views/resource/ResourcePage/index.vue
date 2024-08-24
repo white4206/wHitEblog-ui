@@ -12,24 +12,24 @@
                     <div class="title"><span>设置查询参数</span></div>
                   </div>
                 </template>
-                <el-form :model="queryParam" ref="queryParamRef" :rules="queryParamRules">
+                <el-form :model="queryParams" ref="queryParamsRef" :rules="queryParamsRules">
                   <el-form-item label="类型">
-                    <el-radio-group @change="typeChange" v-model="queryParam.type">
+                    <el-radio-group @change="typeChange" v-model="queryParams.type">
                       <el-radio-button v-for="item in typeItems" :label="item.name" :value="item.id"/>
                     </el-radio-group>
                   </el-form-item>
                   <el-form-item label="方向">
-                    <el-radio-group @change="directionChange" v-model="queryParam.direction">
+                    <el-radio-group @change="directionChange" v-model="queryParams.direction">
                       <el-radio-button v-for="item in directionItems" :label="item.name" :value="item.id"/>
                     </el-radio-group>
                   </el-form-item>
-                  <el-form-item v-if="queryParam.direction!==1" label="分类">
-                    <el-radio-group @change="categoryChange" v-model="queryParam.category">
+                  <el-form-item v-if="queryParams.direction!==1" label="分类">
+                    <el-radio-group @change="categoryChange" v-model="queryParams.category">
                       <el-radio-button v-for="item in categoryItems" :label="item.name" :value="item.id"/>
                     </el-radio-group>
                   </el-form-item>
                   <el-form-item label="格式">
-                    <el-radio-group @change="formatChange" v-model="queryParam.format">
+                    <el-radio-group @change="formatChange" v-model="queryParams.format">
                       <el-radio-button v-for="item in formatItems" :label="item.name" :value="item.id"/>
                     </el-radio-group>
                   </el-form-item>
@@ -70,7 +70,7 @@ import RightCard from "@/views/resource/ResourcePage/components/RightCard.vue";
 const route = useRoute()
 const router = useRouter()
 const activeTab = ref("default")
-const queryParam = ref({
+const queryParams = ref({
   pageNum: 1,
   pageCount: 50,
   type: 1,
@@ -78,8 +78,8 @@ const queryParam = ref({
   format: 1,
   category: 1
 })
-const queryParamRef = ref()
-const queryParamRules = ref({})
+const queryParamsRef = ref()
+const queryParamsRules = ref({})
 const typeItems = ref([
   {id: 1, name: "下载资源"}, {id: 2, name: "电子书"}, {id: 3, name: "效率工具"},
   {id: 4, name: "开发工具"}, {id: 5, name: "软件资源"}, {id: 6, name: "源代码"},
@@ -105,10 +105,10 @@ const categoryItems = ref([
 const tabClick = (tab) => {
   router.push({
     query: {
-      type: queryParam.value.type || undefined,
-      direction: queryParam.value.direction || undefined,
-      category: queryParam.value.category || undefined,
-      format: queryParam.value.format || undefined,
+      type: queryParams.value.type || undefined,
+      direction: queryParams.value.direction || undefined,
+      category: queryParams.value.category || undefined,
+      format: queryParams.value.format || undefined,
       tab: tab.paneName
     }
   })
@@ -116,10 +116,10 @@ const tabClick = (tab) => {
 const typeChange = () => {
   router.push({
     query: {
-      type: queryParam.value.type || undefined,
-      direction: queryParam.value.direction || undefined,
-      category: queryParam.value.category || undefined,
-      format: queryParam.value.format || undefined,
+      type: queryParams.value.type || undefined,
+      direction: queryParams.value.direction || undefined,
+      category: queryParams.value.category || undefined,
+      format: queryParams.value.format || undefined,
       tab: activeTab.value
     }
   })
@@ -127,10 +127,10 @@ const typeChange = () => {
 const directionChange = () => {
   router.push({
     query: {
-      type: queryParam.value.type || undefined,
-      direction: queryParam.value.direction || undefined,
-      category: queryParam.value.category || undefined,
-      format: queryParam.value.format || undefined,
+      type: queryParams.value.type || undefined,
+      direction: queryParams.value.direction || undefined,
+      category: queryParams.value.category || undefined,
+      format: queryParams.value.format || undefined,
       tab: activeTab.value
     }
   })
@@ -138,10 +138,10 @@ const directionChange = () => {
 const categoryChange = () => {
   router.push({
     query: {
-      type: queryParam.value.type || undefined,
-      direction: queryParam.value.direction || undefined,
-      category: queryParam.value.category || undefined,
-      format: queryParam.value.format || undefined,
+      type: queryParams.value.type || undefined,
+      direction: queryParams.value.direction || undefined,
+      category: queryParams.value.category || undefined,
+      format: queryParams.value.format || undefined,
       tab: activeTab.value
     }
   })
@@ -149,10 +149,10 @@ const categoryChange = () => {
 const formatChange = () => {
   router.push({
     query: {
-      type: queryParam.value.type || undefined,
-      direction: queryParam.value.direction || undefined,
-      category: queryParam.value.category || undefined,
-      format: queryParam.value.format || undefined,
+      type: queryParams.value.type || undefined,
+      direction: queryParams.value.direction || undefined,
+      category: queryParams.value.category || undefined,
+      format: queryParams.value.format || undefined,
       tab: activeTab.value
     }
   })
@@ -161,13 +161,13 @@ onMounted(() => {
   if (route.query.tab)
     activeTab.value = route.query.tab
   if (route.query.type)
-    queryParam.value.type = route.query.type
+    queryParams.value.type = route.query.type
   if (route.query.direction)
-    queryParam.value.direction = route.query.direction
+    queryParams.value.direction = route.query.direction
   if (route.query.category)
-    queryParam.value.category = route.query.category
+    queryParams.value.category = route.query.category
   if (route.query.format)
-    queryParam.value.format = route.query.format
+    queryParams.value.format = route.query.format
 })
 </script>
 

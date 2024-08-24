@@ -305,7 +305,7 @@
                           {{ element.type ? 'DOWNLOAD' : 'BLOG' }}
                           </el-tag>
                         </span>
-                        <span style="cursor: pointer;" @click="toDetails(element.id)">
+                        <span style="cursor: pointer;" @click="toDetails(`/blog/details/${element.id}`)">
                           {{ element.contentTitle }}
                         </span>
                       </div>
@@ -370,6 +370,7 @@ import {useRoute, useRouter} from "vue-router";
 import {ElMessage} from "element-plus";
 import draggable from 'vuedraggable'
 import {validFolderName} from "@/utils/validate.js";
+import toDetails from "@/utils/toDetails.js";
 
 const selectNum = ref(0)
 const isBatchOpt = ref(false)
@@ -514,9 +515,6 @@ const moveFolder = () => {
     }
   })
 }
-const toDetails = (id) => {
-  window.open(location.href.split("#")[0] + `#/blog/details/${id}`)
-}
 const getFavoriteData = (id) => {
   getFavorite(id).then((res) => {
     favorites.value = res.data.map(item => {
@@ -546,8 +544,8 @@ const changeFavoriteFolder = (argument, item) => {
 }
 const pageChange = () => {
   // document.documentElement.scrollTop = 0
-  // queryParam.value.pageNum = currentPage.value
-  // queryParam.value.pageCount = currentSize.value
+  // queryParams.value.pageNum = currentPage.value
+  // queryParams.value.pageCount = currentSize.value
   // loading.value = true
   // getData()
 }

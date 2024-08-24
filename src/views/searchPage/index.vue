@@ -8,7 +8,7 @@
             <el-row :gutter="10">
               <el-col :span="18" justify="center">
                 <div class="search-box">
-                  <el-input v-model="queryParam.keyword" placeholder="请输入文章关键词 <(＿　＿)>"
+                  <el-input v-model="queryParams.keyword" placeholder="请输入文章关键词 <(＿　＿)>"
                             @keyup.enter="search"
                             class="search-input" clearable>
                     <template #prefix>
@@ -37,10 +37,10 @@
             <el-card shadow="never" class="search-content-card">
               <el-tabs v-model="activeTab" @tab-click="tabClick">
                 <el-collapse-transition>
-                  <el-form v-show="isExpand" class="queryForm" :model="queryParam" ref="queryParamRef"
-                           :rules="queryParamRules">
+                  <el-form v-show="isExpand" class="queryForm" :model="queryParams" ref="queryParamsRef"
+                           :rules="queryParamsRules">
                     <el-form-item label="时间">
-                      <el-radio-group v-model="queryParam.timeArea">
+                      <el-radio-group v-model="queryParams.timeArea">
                         <el-radio-button v-for="item in timeAreaItems" :label="item.label" :value="item.value"/>
                       </el-radio-group>
                     </el-form-item>
@@ -48,7 +48,7 @@
                 </el-collapse-transition>
                 <div class="sub-option">
                   <div class="querySelectForm">
-                    <el-radio-group v-model="queryParam.querySelect" size="small" @change="querySelectChange">
+                    <el-radio-group v-model="queryParams.querySelect" size="small" @change="querySelectChange">
                       <el-radio-button label="综合" value="default"/>
                       <el-radio-button label="最新" value="latest"/>
                       <el-radio-button label="热门" value="hot"/>
@@ -194,7 +194,7 @@ const isExpand = ref(false)
 const activeTab = ref("default")
 const rightCardRef = ref()
 const fixHeight = ref()
-const queryParam = ref({
+const queryParams = ref({
   pageNum: 0,
   pageCount: 10,
   authorId: null,
@@ -202,8 +202,8 @@ const queryParam = ref({
   timeArea: "default",
   querySelect: "default"
 })
-const queryParamRef = ref()
-const queryParamRules = ref({})
+const queryParamsRef = ref()
+const queryParamsRules = ref({})
 const timeAreaItems = ref([
   {id: 1, label: "不限", value: "default"},
   {id: 2, label: "一周内", value: "week"},
@@ -217,7 +217,7 @@ const getData = () => {
   noData.value = false
   isLoading.value = true
   noMore.value = true
-  searchArticle(queryParam.value).then(res => {
+  searchArticle(queryParams.value).then(res => {
     total.value = res.info.total
     // 映射拿回的数据并将其返回的数据解构推入存储
     blogItems.value.push(...(res.data.map(item => {
@@ -242,48 +242,48 @@ const getData = () => {
   })
 }
 const load = () => {
-  queryParam.value.pageNum += 1
+  queryParams.value.pageNum += 1
   getData()
 }
 // 重置参数
 const reset = () => {
-  queryParam.value.pageNum = 1
-  queryParam.value.pageCount = 10
+  queryParams.value.pageNum = 1
+  queryParams.value.pageCount = 10
   blogItems.value = []
   infinite.value = false
 }
 const search = () => {
   router.push({
     query: {
-      author: queryParam.value.authorId || undefined,
-      q: queryParam.value.keyword || undefined,
+      author: queryParams.value.authorId || undefined,
+      q: queryParams.value.keyword || undefined,
       tab: activeTab.value,
-      query: queryParam.value.querySelect
+      query: queryParams.value.querySelect
     }
   })
   if (route.query.author) {
-    queryParam.value.authorId = route.query.author
+    queryParams.value.authorId = route.query.author
     activeTab.value = "article"
   } else
-    queryParam.value.authorId = null
+    queryParams.value.authorId = null
   reset()
   getData()
 }
 const searchAllArticle = () => {
   router.push({
-    query: {q: queryParam.value.keyword, tab: activeTab.value, query: queryParam.value.querySelect}
+    query: {q: queryParams.value.keyword, tab: activeTab.value, query: queryParams.value.querySelect}
   })
-  queryParam.value.authorId = null
+  queryParams.value.authorId = null
   reset()
   getData()
 }
 const querySelectChange = () => {
   router.push({
     query: {
-      author: queryParam.value.authorId || undefined,
-      q: queryParam.value.keyword,
+      author: queryParams.value.authorId || undefined,
+      q: queryParams.value.keyword,
       tab: activeTab.value,
-      query: queryParam.value.querySelect
+      query: queryParams.value.querySelect
     }
   })
   reset()
@@ -292,10 +292,10 @@ const querySelectChange = () => {
 const tabClick = (tab) => {
   router.push({
     query: {
-      author: queryParam.value.authorId || undefined,
-      q: queryParam.value.keyword,
+      author: queryParams.value.authorId || undefined,
+      q: queryParams.value.keyword,
       tab: tab.paneName,
-      query: queryParam.value.querySelect
+      query: queryParams.value.querySelect
     }
   })
 }
@@ -303,14 +303,14 @@ onMounted(() => {
   if (route.query.tab)
     activeTab.value = route.query.tab
   if (route.query.query)
-    queryParam.value.querySelect = route.query.query
+    queryParams.value.querySelect = route.query.query
   if (route.query.author) {
-    queryParam.value.authorId = route.query.author
+    queryParams.value.authorId = route.query.author
     activeTab.value = "article"
   } else
-    queryParam.value.authorId = null
+    queryParams.value.authorId = null
 
-  queryParam.value.keyword = route.query.q || null
+  queryParams.value.keyword = route.query.q || null
   load()
   // 监听滚动改变右边栏的固定位置
   window.addEventListener("scroll", () => {

@@ -32,17 +32,17 @@ import {getArticle} from '@/api/blog.js'
 import toDetails from "@/utils/toDetails.js";
 
 // 推荐文章请求参数
-const queryParam = ref({
+const queryParams = ref({
   pageNum: 0,
   pageCount: 10,
 })
 // 热门文章请求参数
-const hotQueryParam = ref({
+const hotqueryParams = ref({
   pageNum: 0,
   pageCount: 10,
 })
 // 关注文章请求参数
-const attentionQueryParam = ref({
+const attentionqueryParams = ref({
   pageNum: 0,
   pageCount: 10,
 })
@@ -61,7 +61,7 @@ const activeName = ref('recommended')
 const getData = () => {
   noMore.value = true
   isLoading.value = true
-  getArticle(queryParam.value).then(res => {
+  getArticle(queryParams.value).then(res => {
     blogItems.value.push(...(res.data.map(item => {
       return {
         ...item,
@@ -78,7 +78,7 @@ const getData = () => {
 }
 // 获取热门数据
 const getHotData = () => {
-  getArticle(hotQueryParam.value).then(res => {
+  getArticle(hotqueryParams.value).then(res => {
 
     hotBlogItems.value.push(...(res.data.map(item => {
       return {
@@ -95,7 +95,7 @@ const getHotData = () => {
   })
 }
 const reset = () => {
-  queryParam.value = hotQueryParam.value = attentionQueryParam.value = {
+  queryParams.value = hotqueryParams.value = attentionqueryParams.value = {
     pageNum: 1,
     pageCount: 10,
   }
@@ -115,11 +115,11 @@ const handleClick = (tab, event) => {
   }
 }
 const load = () => {
-  queryParam.value.pageNum += 1
+  queryParams.value.pageNum += 1
   getData()
 }
 const loadHot = () => {
-  hotQueryParam.value.pageNum += 1
+  hotqueryParams.value.pageNum += 1
   getHotData()
 }
 onMounted(() => {
