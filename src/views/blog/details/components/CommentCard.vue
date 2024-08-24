@@ -240,7 +240,6 @@ onMounted(() => {
         isComment: false,
       }
     })
-    console.log(articleComment.value)
   })
 })
 </script>
