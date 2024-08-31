@@ -154,8 +154,8 @@ const isOpen = ref(false)
 const rightCardRef = ref()
 const fixHeight = ref(0)
 const videos = ref([
-  {src: "http://47.120.12.136:8080/videos/jojo.mp4", size: "1440"},
-  {src: "http://47.120.12.136:8080/videos/jojo.mp4"}
+  {src: "http://server.whitecc.top/videos/jojo.mp4", size: "1440"},
+  {src: "http://server.whitecc.top/videos/jojo.mp4"}
 ])
 
 const focusCommentInput = () => {

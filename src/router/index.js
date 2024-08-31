@@ -69,7 +69,7 @@ const routes = [
             },
             {
                 path: "details/:Vid",
-                meta: {title: ""},
+                meta: {title: "", navbar: null},
                 component: () => import("@/views/video/details/index.vue"),
             }
         ],
